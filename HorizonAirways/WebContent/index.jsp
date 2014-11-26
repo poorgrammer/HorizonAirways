@@ -11,21 +11,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Welcome to Horizon Airways</title>
-<style>
-a {
-	cursor: pointer;
-}
-
-div {
-	background-color: Red;
-}
-</style>
 
 </head>
 
 <body>
 	<font face="Arial, Helvetica, sans-serif" size="-1"> <!-- LOGIN FORM -->
 
+		<div>
+		<h1>Horizon Airways</h1>
+		
 		<c:choose>
 			<c:when test="${ empty sessionScope.user}">
 				<form action="./login" method="post">
@@ -41,11 +35,11 @@ div {
 				</form>
 			</c:when>
 			<c:otherwise>
-				<td><input type="submit" name="submit" value="Log out" /></td>
+				<input type="submit" name="submit" value="Log out" align="right"/>
 			</c:otherwise>
-
-		</c:choose> <br /> <br /> <br />
-		<h1>Horizon Airways</h1>
+		</c:choose>
+		</div>
+		
 
 		<div>
 			<c:if test="${not empty sessionScope.user}">
@@ -56,7 +50,7 @@ div {
 			</c:if>
 		</div>
 
-		<hr /> <br /> <br />
+		<hr />
 
 		<table width="1024" border="1" align="center">
 			<tr>

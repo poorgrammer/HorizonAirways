@@ -18,66 +18,83 @@
     <h1>Horizon Airways</h1>
     
     <hr/>
-    <br/><br/>
-
-    <form>
-    	
-      <h3>Flight No: ${flightNo}</h3>
-      
-        <b>Flight Date:</b>
-        <input type="date" name="flightDate" />
-        <input type="submit" name="submit" value="Filter"/>
-        
-      
-        
-    </form>
-	
-    <br/>
     
-<table border="1" align="center">
-     <tr>
-       <th rowspan="2" scope="col">Flight No.</th>
-       <th rowspan="2" scope="col">Sector</th>
-       <th rowspan="2" scope="col">Flight Date</th>
-       <th rowspan="2" scope="col">Aircraft Type</th>
-       <th rowspan="2" scope="col">Departure Time</th>
-       <th rowspan="2" scope="col">Arrival Time</th>
-       <th colspan="3" scope="col">Remaining Seats</th>
-     </tr>
-     <tr>
-       <th scope="col">First Class</th>
-       <th scope="col">Business Class</th>
-       <th scope="col">Economy Class</th>
-     </tr>
-     
-     <c:forEach items="${flightDetailsList}" var="flightDetails">
-     <tr>
-       <td>${flightDetails.flightNo}</td>
-       <td>${flightDetails.sectorId}</td>
-       <td>${flightDetails.flightDate}</td>
-       <td>${flightDetails.aircraftType}</td>
-       <td>${flightDetails.departureTime}</td>
-       <td>${flightDetails.arrivalTime}</td>
-       <td>${flightDetails.firstClassSeatsAvailable}</td>
-       <td>${flightDetails.businessClassSeatsAvailable}</td>
-       <td>${flightDetails.economyClassSeatsAvailable}</td>
-     </tr>
-     </c:forEach>
-   </table> 
-   
-   
- 
- 
- 
- 
-					
-					
-				
- 
- 
- 
- 
- 
+
+	<h3>Flight No: ${flightNo}</h3>
+    
+    <table>
+      <tr>
+        <td width="230">
+        <form>
+            <form>
+                <input type="radio" name="oneway" /> One-Way
+                <input type="radio" name="roundtrip" /> Round Trip
+            </form>
+            
+            <b>Flight Date:</b>
+            <br/><br/>
+            <select name="month">
+            	<option>Month</option>
+                <option>January</option>
+                <option>February</option>
+                <option>March</option>
+                <option>April</option>
+                <option>May</option>
+                <option>June</option>
+                <option>July</option>
+                <option>August</option>
+                <option>September</option>
+                <option>October</option>
+                <option>November</option>
+                <option>December</option>
+            </select>
+            <select name="year">
+            	<option>Year</option>
+                <option>2014</option>
+                <option>2015</option>
+                <option>2016</option>
+            </select>
+            <br/><br/>
+            <input type="submit" name="submit" value="Search" align="right"/>
+    
+        </form>
+    	</td>
+        
+        <td>
+        	<table border="1" align="center">
+             <tr>
+               <th rowspan="2" scope="col">Flight No.</th>
+               <th rowspan="2" scope="col">Sector</th>
+               <th rowspan="2" scope="col">Flight Date</th>
+               <th rowspan="2" scope="col">Aircraft Type</th>
+               <th rowspan="2" scope="col">Departure Time</th>
+               <th rowspan="2" scope="col">Arrival Time</th>
+               <th colspan="3" scope="col">Remaining Seats</th>
+             </tr>
+             <tr>
+               <th scope="col">First Class</th>
+               <th scope="col">Business Class</th>
+               <th scope="col">Economy Class</th>
+             </tr>
+             
+             <c:forEach items="${flightDetailsList}" var="flightDetails">
+             <tr>
+               <td>${flightDetails.flightNo}</td>
+               <td>${flightDetails.sectorId}</td>
+               <td>${flightDetails.flightDate}</td>
+               <td>${flightDetails.aircraftType}</td>
+               <td>${flightDetails.departureTime}</td>
+               <td>${flightDetails.arrivalTime}</td>
+               <td>${flightDetails.firstClassSeatsAvailable}</td>
+               <td>${flightDetails.businessClassSeatsAvailable}</td>
+               <td>${flightDetails.economyClassSeatsAvailable}</td>
+             </tr>
+             </c:forEach>
+           </table> 
+        </td>
+      </tr>
+    </table>
+    
 </font>
 </body>
 </html>
