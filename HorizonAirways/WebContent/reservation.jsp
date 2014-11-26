@@ -33,27 +33,11 @@
             <br/>
             <b>Flight Date:</b>
             <br/><br/>
-            <select name="month">
-            	<option>Month</option>
-                <option>January</option>
-                <option>February</option>
-                <option>March</option>
-                <option>April</option>
-                <option>May</option>
-                <option>June</option>
-                <option>July</option>
-                <option>August</option>
-                <option>September</option>
-                <option>October</option>
-                <option>November</option>
-                <option>December</option>
-            </select>
-            <select name="year">
-            	<option>Year</option>
-                <option>2014</option>
-                <option>2015</option>
-                <option>2016</option>
-            </select>
+           
+        <select name="month">
+             <c:forEach items="${months}" var="monthyear">
+             <option><c:out value="${monthyear}"/></option>>
+               </c:forEach>
             <br/><br/>
             <input type="submit" name="submit" value="Search" align="right"/>
     

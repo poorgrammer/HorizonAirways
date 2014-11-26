@@ -1,6 +1,8 @@
 package com.px1.horizonairways.service;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 import com.px1.horizonairways.daimpl.ReservationDA;
 import com.px1.horizonairways.entity.FlightDetails;
@@ -25,5 +27,9 @@ public class FlightReservationService {
 	
 	public List<FlightDetails> getAllFlightDetailsByNum(String flightNo){
 		return da.getAllFlightDetailsByFlightNo(flightNo);
+	}
+	
+	public Map<String, BigDecimal> getFlightFareBySectorId(String sectorId){
+		return da.getFlightFareBySector(sectorId);
 	}
 }

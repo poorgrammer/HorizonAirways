@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.px1.db.DatabaseConnector;
 import com.px1.horizonairways.da.FlightDetailsDA;
@@ -27,7 +29,8 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTID = "SELECT * FROM flightdetails WHERE FlightNo = ? AND FlightDate = ?";
 	private static final String GET_ALL_RESERVED_FLIGHTS_BY_PNR = "SELECT * FROM reservedflights WHERE pnrno = ?";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO = "SELECT * FROM vwflightschedules WHERE flightNo = ?";
-	@Override
+	private static final String GET_FLIGHT_FARE_BY_SECTOR = "SELECT * FROM flightdetails WHERE sectorid = ?";
+	
 	public List<FlightSchedule> getAllFlightSchedule() {
 
 		List<FlightSchedule> flightScheduleList = new ArrayList<FlightSchedule>();
@@ -71,7 +74,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 
 	}
 
-	@Override
+	
 	public List<FlightDetails> getAllFlightDetails() {
 		List<FlightDetails> flightDetailsList = new ArrayList<FlightDetails>();
 		Statement stat = null;
@@ -116,7 +119,6 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 
 	}
 
-	@Override
 	public List<FlightDetails> getFlightDetails(FlightId flightId) {
 
 		List<FlightDetails> flightDetailsList = new ArrayList<FlightDetails>();
@@ -168,19 +170,19 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 
 	}
 
-	@Override
+	
 	public List<Passenger> getAllPassengers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public List<ReservedFlight> getAllReservedFlights() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public List<ReservedFlight> getReservedFlights(String pnr) {
 
 		List<ReservedFlight> reservedFlights = new ArrayList<ReservedFlight>();
@@ -229,7 +231,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 
 	
 	
-	@Override
+	
 	public List<Passenger> getAllPassengersByFlight(FlightId id) {
 		
 		
@@ -237,7 +239,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		return null;
 	}
 
-	@Override
+	
 	public List<FlightDetails> getAllFlightDetailsByFlightNo(String flightNum) {
 		
 		List<FlightDetails> flightDetailsList = new ArrayList<FlightDetails>();
@@ -279,5 +281,45 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		}
 		return flightDetailsList;
 	}
+
+
+
+
+	public Map<String, BigDecimal> getFlightFareBySector(String sectorId) {
+		
+		Map<String, BigDecimal> flightFareMap = new HashMap<String, BigDecimal>();
+		PreparedStatement stat = null;
+		try {
+			stat = DatabaseConnector.getConnection().prepareStatement(GET_FLIGHT_FARE_BY_SECTOR);
+			stat.setString(1, sectorId);
+			ResultSet rs = stat.executeQuery();
+
+			while (rs.next()) {
+		BigDecimal firstClassFare = rs.getBigDecimal(1);
+		BigDecimal businessClassFare = rs.getBigDecimal(2);
+		BigDecimal economyClassFare = rs.getBigDecimal(3);
+		
+		flightFareMap.put("firstClassFare", firstClassFare);
+		flightFareMap.put("businessClassFare", businessClassFare);
+		flightFareMap.put("economyClassFare", economyClassFare);
+		
+	}
+			
+		}	catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			if (stat != null)
+				try {
+					stat.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+	
+		}
+		
+		return flightFareMap;
+			
+			
 
 }

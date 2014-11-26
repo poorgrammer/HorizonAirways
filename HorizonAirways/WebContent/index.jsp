@@ -103,8 +103,7 @@ table.flightDetails{
 					<td>${flightSchedule.firstClassFare }</td>
 					<td>${flightSchedule.businessClassFare }</td>
 					<td>${flightSchedule.economyClassFare }</td>
-					<td><a href="./reservation?flightNo=${flightSchedule.flightNo}&amp;sectorId=${flightSchedule.sectorId}
-					&amp;firstClassFare=${flightSchedule.firstClassFare }&amp;businessClassFare=${flightSchedule.businessClassFare }&amp;economyClassFare=${flightSchedule.economyClassFare }">Reserve</a></td>
+					<td><a href="./reservation?flightNo=${flightSchedule.flightNo}&amp;sectorId=${flightSchedule.sectorId}">Reserve</a></td>
 				</tr>
 
 			</c:forEach>
