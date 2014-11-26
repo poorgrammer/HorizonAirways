@@ -11,5 +11,6 @@ public interface FlightDetailsDA {
 	public List<FlightDetails> getAllFlightDetails();
 	public List<FlightDetails> getFlightDetails(FlightId id);
 	public List<FlightSchedule> getAllFlightSchedule();
+	public List<FlightDetails> getAllFlightDetailsByFlightNo(String flightNo);
 
 }

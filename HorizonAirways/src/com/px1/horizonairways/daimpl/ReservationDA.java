@@ -23,10 +23,10 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		ReserveFlightsDA {
 
 	private static final String GET_ALL_FLIGHT_SCHEDULE = "SELECT * FROM flightdetailsindays";
-	private static final String GET_ALL_FLIGHT_DETAILS = "SELECT * FROM flightdetails";
+	private static final String GET_ALL_FLIGHT_DETAILS = "SELECT * FROM flightschedules ";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTID = "SELECT * FROM flightdetails WHERE FlightNo = ? AND FlightDate = ?";
 	private static final String GET_ALL_RESERVED_FLIGHTS_BY_PNR = "SELECT * FROM reservedflights WHERE pnrno = ?";
-
+	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO = "SELECT * FROM vwflightschedules WHERE flightNo = ?";
 	@Override
 	public List<FlightSchedule> getAllFlightSchedule() {
 
@@ -235,6 +235,49 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		
 		
 		return null;
+	}
+
+	@Override
+	public List<FlightDetails> getAllFlightDetailsByFlightNo(String flightNum) {
+		
+		List<FlightDetails> flightDetailsList = new ArrayList<FlightDetails>();
+		PreparedStatement stat = null;
+		try {
+			stat = DatabaseConnector.getConnection().prepareStatement(GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO);
+			stat.setString(1, flightNum);
+			ResultSet rs = stat.executeQuery();
+
+			while (rs.next()) {
+
+				String flightNo = rs.getString(1);
+				String sectorId = rs.getString(2);
+				String aircraftDescription = rs.getString(3);
+				Date flightDate = rs.getDate(4);
+				String depTime = rs.getString(5);
+				String arrTime = rs.getString(6);
+				int firstClassFare = rs.getInt(7);
+				int businessClassFare = rs.getInt(8);
+				int economyClassFare = rs.getInt(9);
+
+				FlightDetails flightDetails = new FlightDetails(flightNo,
+						sectorId, flightDate, aircraftDescription, depTime,
+						arrTime, firstClassFare, businessClassFare,
+						economyClassFare);
+
+				flightDetailsList.add(flightDetails);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (stat != null)
+				try {
+					stat.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+		return flightDetailsList;
 	}
 
 }

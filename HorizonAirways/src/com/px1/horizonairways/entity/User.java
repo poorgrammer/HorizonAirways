@@ -4,7 +4,7 @@ public class User {
 
 	private String userName;
 	private String password;
-	private boolean isAdmin;
+	private boolean admin;
 
 	public User() {
 
@@ -14,7 +14,7 @@ public class User {
 		super();
 		this.userName = userName;
 		this.password = password;
-		this.isAdmin = isAdmin;
+		this.admin = isAdmin;
 	}
 
 	public String getUserName() {
@@ -35,14 +35,13 @@ public class User {
 
 	
 
-	public boolean getIsAdmin() {
-		return isAdmin;
-	}
-
-	public void setIsAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+	public boolean isAdmin(){
+		return admin;
 	}
 	
+	public void setAdmin(boolean flag){
+		this.admin = flag;
+	}
 
 
 }

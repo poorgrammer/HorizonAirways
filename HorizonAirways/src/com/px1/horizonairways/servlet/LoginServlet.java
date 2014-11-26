@@ -40,8 +40,7 @@ public class LoginServlet extends HttpServlet {
 		Login login = new Login(username, password);
 		User user = loginService.validateUser(login);
 		request.getSession().setAttribute("user", user);
-		System.out.println("asdasd");
-		System.out.println(user.getUserName());
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./index.jsp");
 		dispatcher.forward(request, response);
 	}
