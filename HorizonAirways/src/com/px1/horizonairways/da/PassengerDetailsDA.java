@@ -6,6 +6,6 @@ import com.px1.horizonairways.entity.Passenger;
 
 public interface PassengerDetailsDA {
 	
-	public List<Passenger> getAllPassenger();
+	public List<Passenger> getAllPassengers();
 
 }

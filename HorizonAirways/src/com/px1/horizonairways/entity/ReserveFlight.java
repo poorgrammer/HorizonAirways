@@ -2,7 +2,7 @@ package com.px1.horizonairways.entity;
 
 import java.util.Date;
 
-public class ReserveFlights {
+public class ReserveFlight {
 	
 	private String PNRNo;
 	private String FlightNo;
@@ -12,10 +12,10 @@ public class ReserveFlights {
 	private String mealPreference;
 	private String SSR;
 	
-	public ReserveFlights() {
+	public ReserveFlight() {
 	}
 
-	public ReserveFlights(String pNRNo, String flightNo, Date flightDate,
+	public ReserveFlight(String pNRNo, String flightNo, Date flightDate,
 			String seatNo, String seatClass, String mealPreference, String sSR) {
 		super();
 		PNRNo = pNRNo;
