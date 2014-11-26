@@ -125,8 +125,8 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		try {
 			ps = DatabaseConnector.getConnection().prepareStatement(
 					GET_ALL_FLIGHT_DETAILS_BY_FLIGHTID);
-			ps.setString(0, flightId.getFlightNo());
-			ps.setDate(1, new java.sql.Date(flightId.getFlightDate().getTime()));
+			ps.setString(1, flightId.getFlightNo());
+			ps.setDate(2, new java.sql.Date(flightId.getFlightDate().getTime()));
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -189,7 +189,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		try {
 			ps = DatabaseConnector.getConnection().prepareStatement(
 					GET_ALL_RESERVED_FLIGHTS_BY_PNR);
-			ps.setString(0, pnr);
+			ps.setString(1, pnr);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 
