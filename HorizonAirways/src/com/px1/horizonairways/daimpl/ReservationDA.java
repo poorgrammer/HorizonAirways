@@ -77,7 +77,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		Statement stat = null;
 		try {
 			stat = DatabaseConnector.getConnection().createStatement();
-			ResultSet rs = stat.executeQuery(GET_ALL_FLIGHT_SCHEDULE);
+			ResultSet rs = stat.executeQuery(GET_ALL_FLIGHT_DETAILS);
 
 			while (rs.next()) {
 
