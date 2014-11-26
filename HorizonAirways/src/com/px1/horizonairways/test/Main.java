@@ -8,8 +8,10 @@ public class Main {
 	public static void main(String[] args) {
 		
 		ReservationDA da = new ReservationDA();
-		
-			System.out.println( da.getAllFlightDetails().get(0).getBusinessClassSeatsAvailable());
+
+			System.out.println(da.getAllFlightDetails());
+
+
 		
 		
 
