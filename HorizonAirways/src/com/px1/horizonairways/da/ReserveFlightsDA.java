@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.px1.horizonairways.entity.FlightId;
 import com.px1.horizonairways.entity.Passenger;
-import com.px1.horizonairways.entity.ReserveFlight;
+import com.px1.horizonairways.entity.ReservedFlight;
 
 public interface ReserveFlightsDA {
 	
-	public List<ReserveFlight> getAllReserveFlights();
-	public List<ReserveFlight> getReserveFlights(String pnr);
+	public List<ReservedFlight> getAllReservedFlights();
+	public List<ReservedFlight> getReservedFlights(String pnr);
 	public List<Passenger> getAllPassengersByFlight(FlightId id);
 
 }
