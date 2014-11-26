@@ -14,11 +14,11 @@
 <body>
 <font face="Arial, Helvetica, sans-serif" size="-1">
 	<!-- LOGIN FORM -->
-   	  <form>
+   	  <form action="./login" method="post">
         	<table align="right">
             	<tr>
                	  <td>User Name</td>
-                  <td><input type="text" name="username" /></td>
+                  <td><input type="text" name="userName" /></td>
                   <td>Password</td>
                   <td><input type="password" name="password" /></td>
                     <td><input type="submit" name="submit" value="Log in"/></td>
@@ -27,93 +27,57 @@
 	</form>
 
     <br/><br/><br/>
-    <h1>Horizon Airways</h1><hr/>
-    <br/><br/>
+    <h1>Horizon Airways</h1>
     
-    <table>
-      <tr>
-      	<!-- FILTER FORM -->
-        <td>
-            <form>
-                <form>
-                  <input type="radio" name="trip" value="oneWay" checked/>One-Way
-                  <input type="radio" name="trip" value="roundTrip"/>Round Trip          
-                </form>
-                <table width="250"> 
-                    <tr>
-                        <td>Departure Date:</td>
-                    </tr>
-                    <tr>
-                    	<td><input type="date" name="date" /></td>
-                    </tr>
-                    <tr>
-                        <td>Sector:</td>
-                    </tr>
-                    <tr>
-                    	<td>
-                            <select>
-                                <option>NY-CH</option>
-                                <option>NY-NO</option>
-                                <option>NY-MI</option>
-                                <option>NY-PI</option>
-                                <option>NY-ME</option>
-                                <option>CH-NY</option>
-                                <option>NO-NY</option>
-                                <option>MI-NY</option>
-                                <option>PI-NY</option>
-                                <option>ME-NY</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>No. of Tickets:</td>
-                    </tr>
-                    <tr>
-                    	<td><input type="text" name="no_of_tickets" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" name="submit" value="Filter"/></td>
-                    </tr>
-                </table>
-        	</form>
-    	</td>
-        
-        <!-- FLIGHT DETAILS -->
-        <td>
-        	<table width="1024" border="1" align="center">
-              <tr>
-                <th rowspan="2" scope="col">Flight No.</th>
-                <th rowspan="2" scope="col">Sector</th>
-                <th rowspan="2" scope="col">Days</th>
-                <th rowspan="2" scope="col">Aircraft Type</th>
-                <th rowspan="2" scope="col">Local Departure Time</th>
-                <th rowspan="2" scope="col">Local Arrival Time</th>
-                <th colspan="3" scope="col">Rates</th>
-              </tr>
-              <tr>
-                <th scope="col">First Class</th>
-                <th scope="col">Business Class</th>
-                <th scope="col">Economy Class</th>
-              </tr>
-              
-              <c:forEach items="${applicationScope.flightScheduleList}" var="flightSchedule">
-              <tr>
-                <td>${flightSchedule.flightNo}</td>
-                <td>${flightSchedule.sectorId }</td>
-                <td>${flightSchedule.day }</td>
-                <td>${flightSchedule.aircraftType }</td>
-                <td>${flightSchedule.departureTime }</td>
-                <td>${flightSchedule.arrivalTime }</td>
-                <td>${flightSchedule.firstClassFare }</td>
-                <td>${flightSchedule.businessClassFare }</td>
-                <td>${flightSchedule.economyClassFare }</td>
-              </tr>
-              </c:forEach>
-            </table> 
-            
-        </td>
-      </tr>
-    </table>
+    <div>
+    	<c:set value="${sessionScope.user }" var="asd"/>
+    	<h1>${asd.userName }</h1>
+	    <c:if test="${!empty sessionScope.user} ">
+	    	<h4>Cancel Reservation</h4>
+	    </c:if>
+	      	<%-- <c:if test="${sessionScope.user.isAdmin} ">
+	      		<h4>View Reports</h4>
+	      	</c:if>
+	    </c:if> --%>
+    </div>
+    
+    <hr/>
+    <br/><br/>
+
+   	<table width="1024" border="1" align="center">
+         <tr>
+           <th rowspan="2" scope="col">Flight No.</th>
+           <th rowspan="2" scope="col">Sector</th>
+           <th rowspan="2" scope="col">Days</th>
+           <th rowspan="2" scope="col">Aircraft Type</th>
+           <th rowspan="2" scope="col">Local Departure Time</th>
+           <th rowspan="2" scope="col">Local Arrival Time</th>
+           <th colspan="3" scope="col">Rates</th>
+         </tr>
+         <tr>
+           <th scope="col">First Class</th>
+           <th scope="col">Business Class</th>
+           <th scope="col">Economy Class</th>
+         </tr>
+         
+         <c:forEach items="${applicationScope.flightScheduleList}" var="flightSchedule">
+         <tr>
+           <td>${flightSchedule.flightNo}</td>
+           <td>${flightSchedule.sectorId }</td>
+           <td>${flightSchedule.day }</td>
+           <td>${flightSchedule.aircraftType }</td>
+           <td>${flightSchedule.departureTime }</td>
+           <td>${flightSchedule.arrivalTime }</td>
+           <td>${flightSchedule.firstClassFare }</td>
+           <td>${flightSchedule.businessClassFare }</td>
+           <td>${flightSchedule.economyClassFare }</td>
+         </tr>
+         </c:forEach>
+       </table> 
+       
+       <% if(session.getAttribute("user")!=null)
+    	   %>
+    	   <a href="">Reserve Flight</a>   	 
  
 </font>
 </body>

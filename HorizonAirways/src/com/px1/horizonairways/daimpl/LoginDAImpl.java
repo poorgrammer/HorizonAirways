@@ -33,7 +33,7 @@ public class LoginDAImpl implements LoginDA {
 				String userName = rs.getString(1);
 				String password = rs.getString(2);
 				String role = rs.getString(3);
-				user = new User(userName, password, role);
+				user = new User(userName, password, role.equals("admin"));
 			}
 		} catch (SQLException e) {
 

@@ -4,17 +4,17 @@ public class User {
 
 	private String userName;
 	private String password;
-	private String role;
+	private boolean isAdmin;
 
 	public User() {
 
 	}
 
-	public User(String userName, String password, String role) {
+	public User(String userName, String password, boolean isAdmin) {
 		super();
 		this.userName = userName;
 		this.password = password;
-		this.setRole(role);
+		this.isAdmin = isAdmin;
 	}
 
 	public String getUserName() {
@@ -33,12 +33,16 @@ public class User {
 		this.password = password;
 	}
 
-	public String getRole() {
-		return role;
+	
+
+	public boolean getIsAdmin() {
+		return isAdmin;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setIsAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
+	
+
 
 }
