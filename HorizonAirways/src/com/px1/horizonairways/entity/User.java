@@ -1,17 +1,20 @@
 package com.px1.horizonairways.entity;
 
-public class Login {
+public class User {
 
 	private String userName;
 	private String password;
+	private String role;
 
-	public Login() {
+	public User() {
+
 	}
 
-	public Login(String userName, String password) {
+	public User(String userName, String password, String role) {
 		super();
 		this.userName = userName;
 		this.password = password;
+		this.setRole(role);
 	}
 
 	public String getUserName() {
@@ -28,6 +31,14 @@ public class Login {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }
