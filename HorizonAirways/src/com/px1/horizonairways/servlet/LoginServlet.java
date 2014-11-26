@@ -14,34 +14,32 @@ import com.px1.horizonairways.entity.Login;
 import com.px1.horizonairways.entity.User;
 import com.px1.horizonairways.service.LoginService;
 
-/**
- * Servlet implementation class LoginServlet
- */
+
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public LoginServlet() {
-        super();
-    }
+	public LoginServlet() {
+		super();
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 		LoginService loginService = new LoginService();
-		LoginDAImpl da = new LoginDAImpl();
+		LoginDA da = new LoginDAImpl();
 		loginService.setLoginDA(da);
 		String username = request.getParameter("userName");
 		String password = request.getParameter("password");
-		
+
 		Login login = new Login(username, password);
 		User user = loginService.validateUser(login);
 		request.getSession().setAttribute("user", user);
-		System.out.println("asdasd");
-		System.out.println(user.getUserName());
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./index.jsp");
 		dispatcher.forward(request, response);
 	}
