@@ -11,7 +11,7 @@ import com.px1.horizonairways.entity.FlightDetails;
 import com.px1.horizonairways.entity.FlightId;
 import com.px1.horizonairways.entity.FlightSchedule;
 import com.px1.horizonairways.entity.Passenger;
-import com.px1.horizonairways.entity.ReserveFlights;
+import com.px1.horizonairways.entity.ReserveFlight;
 
 public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA, ReserveFlightsDA {
 
@@ -44,9 +44,11 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA, Reser
 	}
 	
 	@Override
-	public List<ReserveFlights> getAllReserveFlights() {
+	public List<ReserveFlight> getAllReserveFlights() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 
 }
