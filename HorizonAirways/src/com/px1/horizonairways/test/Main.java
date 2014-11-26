@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		ReservationDA da = new ReservationDA();
-			System.out.println(da.getAllFlightDetails().get(1).getFlightNo());
+			System.out.println(da.getAllFlightDetails());
 		
 		
 

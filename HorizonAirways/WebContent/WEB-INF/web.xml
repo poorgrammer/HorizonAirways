@@ -9,4 +9,23 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>FlightScheduleServlet</display-name>
+    <servlet-name>FlightScheduleServlet</servlet-name>
+    <servlet-class>com.px1.horizonairways.servlet.FlightScheduleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FlightScheduleServlet</servlet-name>
+    <url-pattern>/flightschedule</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>IndexFilter</display-name>
+    <filter-name>IndexFilter</filter-name>
+    <filter-class>com.px1.horizonairways.filter.IndexFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>IndexFilter</filter-name>
+    <url-pattern>/index.jsp</url-pattern>
+  </filter-mapping>
 </web-app>

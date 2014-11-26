@@ -1,13 +1,12 @@
 package com.px1.horizonairways.entity;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class FlightSchedule {
 	
 	private String flightNo;
 	private String sectorId;
-	private String Day;
+	private String day;
 	private String aircraftType;
 	private String departureTime;
 	private String arrivalTime;
@@ -25,7 +24,7 @@ public class FlightSchedule {
 		super();
 		this.flightNo = flightNo;
 		this.sectorId = sectorId;
-		Day = day;
+		this.day = day;
 		this.aircraftType = aircraftType;
 		this.departureTime = departureTime;
 		this.arrivalTime = arrivalTime;
@@ -51,11 +50,11 @@ public class FlightSchedule {
 	}
 
 	public String getDay() {
-		return Day;
+		return day;
 	}
 
 	public void setDay(String day) {
-		Day = day;
+		this.day = day;
 	}
 
 	public String getAircraftType() {
@@ -105,7 +104,6 @@ public class FlightSchedule {
 	public void setEconomyClassFare(BigDecimal economyClassFare) {
 		this.economyClassFare = economyClassFare;
 	}
-	
 	
 
 }
