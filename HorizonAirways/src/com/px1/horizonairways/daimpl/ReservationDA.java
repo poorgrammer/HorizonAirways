@@ -30,7 +30,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	@Override
 	public List<FlightSchedule> getAllFlightSchedule() {
 
-		List<FlightSchedule> flightDetailsScheduleList = new ArrayList<FlightSchedule>();
+		List<FlightSchedule> flightScheduleList = new ArrayList<FlightSchedule>();
 		Statement stat = null;
 		try {
 			stat = DatabaseConnector.getConnection().createStatement();
@@ -54,7 +54,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 						aircraftDescription, depTime, arrTime, firstClassFare,
 						businessClassFare, economyClassFare);
 
-				flightDetailsScheduleList.add(flightSchedule);
+				flightScheduleList.add(flightSchedule);
 
 			}
 		} catch (SQLException e) {
@@ -67,7 +67,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 					e.printStackTrace();
 				}
 		}
-		return flightDetailsScheduleList;
+		return flightScheduleList;
 
 	}
 
@@ -77,7 +77,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		Statement stat = null;
 		try {
 			stat = DatabaseConnector.getConnection().createStatement();
-			ResultSet rs = stat.executeQuery(GET_ALL_FLIGHT_SCHEDULE);
+			ResultSet rs = stat.executeQuery(GET_ALL_FLIGHT_DETAILS);
 
 			while (rs.next()) {
 
