@@ -30,10 +30,12 @@ public class LoginDAImpl implements LoginDA {
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
+
 				String userName = rs.getString(1).trim();
 				String password = rs.getString(2).trim();
 				String role = rs.getString(3).trim();
 				user = new User(userName, password, role.equals("admin"));
+
 			}
 		} catch (SQLException e) {
 

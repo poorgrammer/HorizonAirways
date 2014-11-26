@@ -2,6 +2,7 @@
 <%@page import="com.px1.horizonairways.entity.User"%>
 <%@page import="com.px1.horizonairways.da.FlightDetailsDA"%>
 <%@page import="com.px1.horizonairways.entity.FlightSchedule"%>
+<%@page import="com.px1.horizonairways.entity.User"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -11,18 +12,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Welcome to Horizon Airways</title>
 <style>
-a{
-cursor:pointer;}
+a {
+	cursor: pointer;
+}
 
-div{
-background-color:Red;}
-
+div {
+	background-color: Red;
+}
 </style>
 
 </head>
 
 <body>
 	<font face="Arial, Helvetica, sans-serif" size="-1"> <!-- LOGIN FORM -->
+
 		<c:choose>
 			<c:when test="${ empty sessionScope.user}">
 				<form action="./login" method="post">
@@ -78,12 +81,12 @@ background-color:Red;}
 				var="flightSchedule">
 
 				<tr class="detailItem">
-				
-					
-					
-					
-					<td class="flightNo">	${flightSchedule.flightNo}</td>
-					
+
+
+
+
+					<td class="flightNo">${flightSchedule.flightNo}</td>
+
 					<td>${flightSchedule.sectorId }</td>
 					<td>${flightSchedule.day }</td>
 					<td>${flightSchedule.aircraftType }</td>
@@ -92,7 +95,8 @@ background-color:Red;}
 					<td>${flightSchedule.firstClassFare }</td>
 					<td>${flightSchedule.businessClassFare }</td>
 					<td>${flightSchedule.economyClassFare }</td>
-					<td><a href="./reservation?flightNo=${flightSchedule.flightNo}&amp;sectorId=${flightSchedule.sectorId}
+					<td><a
+						href="./reservation?flightNo=${flightSchedule.flightNo}&amp;sectorId=${flightSchedule.sectorId}
 					&amp;firstClassFare=${flightSchedule.firstClassFare }&amp;businessClassFare=${flightSchedule.businessClassFare }&amp;economyClassFare=${flightSchedule.economyClassFare }">Reserve</a></td>
 				</tr>
 
@@ -101,23 +105,8 @@ background-color:Red;}
 
 
 	</font>
-	<form>
-		<input type="hidden" name="flightId" id="fid" />
-	</form>
-
 
 </body>
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script> -->
-<!-- <script>
- $(document).ready(function(){
-	$("tr.detailItem").click(function(){
-		var fid = $(this).children("td.flightNo").text();
-		alert($(this).children("td.flightNo").text());
-		$("#fid").val(fid);
-	});
 
-}); 
-</script>
- -->
 
 </html>
