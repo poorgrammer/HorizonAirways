@@ -4,43 +4,62 @@
 <%@page import="com.px1.horizonairways.entity.FlightSchedule"%>
 <%@page import="com.px1.horizonairways.entity.User"%>
 <%@page import="java.util.*"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Welcome to Horizon Airways</title>
-
 </head>
+<style>
+div.login > div:first-child {
+	font-size: large;
+	font-weight: bold;
+	display: inline-flex;
+	justify-content: flex-start;
+	width: 49%;
+}
+
+div.login > div:last-child {
+	display: inline-flex;
+	justify-content: flex-end;
+	width: 50%;
+}
+
+table.flightDetails{
+	vertical-align: middle;
+	margin-left: auto;
+    margin-right: auto;
+}
+</style>
 
 <body>
 	<font face="Arial, Helvetica, sans-serif" size="-1"> <!-- LOGIN FORM -->
 
-		<div>
-		<h1>Horizon Airways</h1>
-		
-		<c:choose>
-			<c:when test="${ empty sessionScope.user}">
-				<form action="./login" method="post">
-					<table align="right">
-						<tr>
-							<td>User Name</td>
-							<td><input type="text" name="userName" /></td>
-							<td>Password</td>
-							<td><input type="password" name="password" /></td>
-							<td><input type="submit" name="submit" value="Log in" /></td>
-						</tr>
-					</table>
-				</form>
-			</c:when>
-			<c:otherwise>
-				<input type="submit" name="submit" value="Log out" align="right"/>
-			</c:otherwise>
-		</c:choose>
+		<div class="login">
+			<div><p>Horizon Airways</p></div>
+			<div>
+			<c:choose>
+				<c:when test="${ empty sessionScope.user}">
+					<form action="./login" method="post">
+						<table>
+							<tr>
+								<td>User Name</td>
+								<td><input type="text" name="userName" /></td>
+								<td>Password</td>
+								<td><input type="password" name="password" /></td>
+								<td><input type="submit" name="submit" value="Log in" /></td>
+							</tr>
+						</table>
+					</form>
+				</c:when>
+				<c:otherwise>
+					<input type="submit" name="submit" value="Log out" align="right"/>
+				</c:otherwise>
+			</c:choose>
+			</div>
 		</div>
 		
-
 		<div>
 			<c:if test="${not empty sessionScope.user}">
 				<a href="./cancel.jsp">Cancel Flight</a>
@@ -50,9 +69,9 @@
 			</c:if>
 		</div>
 
-		<hr />
+		<hr /> <br/>
 
-		<table width="1024" border="1" align="center">
+		<table width="1024" border="1" class="flightDetails">
 			<tr>
 				<th rowspan="2" scope="col">Flight No.</th>
 				<th rowspan="2" scope="col">Sector</th>
@@ -61,6 +80,7 @@
 				<th rowspan="2" scope="col">Departure Time</th>
 				<th rowspan="2" scope="col">Arrival Time</th>
 				<th colspan="3" scope="col">Rates</th>
+				<th rowspan="2" scope="col">Action</th>
 			</tr>
 
 			<tr>
@@ -69,16 +89,10 @@
 				<th scope="col">Economy Class</th>
 			</tr>
 
-
-
 			<c:forEach items="${applicationScope.flightScheduleList}"
 				var="flightSchedule">
 
 				<tr class="detailItem">
-
-
-
-
 					<td class="flightNo">${flightSchedule.flightNo}</td>
 
 					<td>${flightSchedule.sectorId }</td>
@@ -89,14 +103,12 @@
 					<td>${flightSchedule.firstClassFare }</td>
 					<td>${flightSchedule.businessClassFare }</td>
 					<td>${flightSchedule.economyClassFare }</td>
-					<td><a
-						href="./reservation?flightNo=${flightSchedule.flightNo}&amp;sectorId=${flightSchedule.sectorId}
+					<td><a href="./reservation?flightNo=${flightSchedule.flightNo}&amp;sectorId=${flightSchedule.sectorId}
 					&amp;firstClassFare=${flightSchedule.firstClassFare }&amp;businessClassFare=${flightSchedule.businessClassFare }&amp;economyClassFare=${flightSchedule.economyClassFare }">Reserve</a></td>
 				</tr>
 
 			</c:forEach>
 		</table>
-
 
 	</font>
 

@@ -2,9 +2,9 @@
 <%@page import="com.px1.horizonairways.da.FlightDetailsDA"%>
 <%@page import="com.px1.horizonairways.entity.FlightSchedule"%>
 <%@page import="java.util.*"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,16 +21,16 @@
     
 
 	<h3>Flight No: ${flightNo}</h3>
-    
+    <br/>
     <table>
       <tr>
-        <td width="230">
+        <td width="250">
         <form>
             <form>
-                <input type="radio" name="oneway" /> One-Way
-                <input type="radio" name="roundtrip" /> Round Trip
+                <input type="radio" name="trip" value="oneway"/> One-Way
+                <input type="radio" name="trip" value="roundtrip"/> Round Trip
             </form>
-            
+            <br/>
             <b>Flight Date:</b>
             <br/><br/>
             <select name="month">
