@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
@@ -43,14 +45,23 @@ public class ReservationServlet extends HttpServlet {
 		ReservationDA da = new ReservationDA();
 		service.setDa(da);
 		Map<String, BigDecimal> flightFareMap = service.getFlightFareBySectorId(sectorId);
-		List<FlightDetails> flightDetailsList = service.getAllFlightDetailsByNum(flightNo);
+		Date date = new Date();
+		Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+		calendar.setTime(date);
+		calendar.add(Calendar.DATE, 30);
+		calendar.set(Calendar.HOUR, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
+		date = calendar.getTime();
+		
+		List<FlightDetails> flightDetailsList = service.getAllFlightDetailsByNumAndDate(flightNo,date);
 		String roundtripSector = sectorId.substring(3) + sectorId.charAt(2) + sectorId.substring(0,2);
 		List<FlightDetails> flightDetailsRoundtrip = service.getAllFlightDetailsBySector(roundtripSector);
-		request.setAttribute("flightDetailsList", flightDetailsList);
-		request.setAttribute("flightDetailsRoundtrip", flightDetailsRoundtrip);
+		
 		String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	    List<String> months = new ArrayList<String>();
-		Calendar calendar = Calendar.getInstance();
+	    calendar = Calendar.getInstance();
 		for(int i = 0; i<4; i++){
 			int month = calendar.get(Calendar.MONTH)+i;
 			int year = calendar.get(Calendar.YEAR);
@@ -63,7 +74,9 @@ public class ReservationServlet extends HttpServlet {
 			}
 			
 		}
-		
+
+		request.setAttribute("flightDetailsList", flightDetailsList);
+		request.setAttribute("flightDetailsRoundtrip", flightDetailsRoundtrip);
 		request.setAttribute("flightNo", flightNo);
 		request.setAttribute("flightFareMap", flightFareMap);
 		request.setAttribute("sectorId", sectorId);

@@ -29,7 +29,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_SECTOR = "SELECT * FROM flightschedules WHERE sectorid = ?";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTID = "SELECT * FROM flightdetails WHERE FlightNo = ? AND FlightDate = ?";
 	private static final String GET_ALL_RESERVED_FLIGHTS_BY_PNR = "SELECT * FROM reservedflights WHERE pnrno = ?";
-	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO = "SELECT * FROM vwflightschedules WHERE flightNo = ?";
+	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO_AND_DATE = "SELECT * FROM vwflightschedules WHERE flightNo = ? AND flightDate > ?";
 	private static final String GET_FLIGHT_FARE_BY_SECTOR = "SELECT * FROM flightdetails WHERE sectorid = ?";
 	
 	public List<FlightSchedule> getAllFlightSchedule() {
@@ -241,13 +241,14 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	}
 
 	
-	public List<FlightDetails> getAllFlightDetailsByFlightNo(String flightNum) {
+	public List<FlightDetails> getAllFlightDetailsByFlightNoAndDate(String flightNum, Date date) {
 		
 		List<FlightDetails> flightDetailsList = new ArrayList<FlightDetails>();
 		PreparedStatement stat = null;
 		try {
-			stat = DatabaseConnector.getConnection().prepareStatement(GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO);
+			stat = DatabaseConnector.getConnection().prepareStatement(GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO_AND_DATE);
 			stat.setString(1, flightNum);
+			stat.setDate(2, new java.sql.Date(date.getTime()));
 			ResultSet rs = stat.executeQuery();
 
 			while (rs.next()) {
@@ -370,4 +371,6 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		return flightDetailsListBySector;
 
 	}
+
+
 }

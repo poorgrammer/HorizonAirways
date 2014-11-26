@@ -1,6 +1,7 @@
 package com.px1.horizonairways.service;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -25,8 +26,8 @@ public class FlightReservationService {
 		
 	}
 	
-	public List<FlightDetails> getAllFlightDetailsByNum(String flightNo){
-		return da.getAllFlightDetailsByFlightNo(flightNo);
+	public List<FlightDetails> getAllFlightDetailsByNumAndDate(String flightNo, Date flightDate){
+		return da.getAllFlightDetailsByFlightNoAndDate(flightNo, flightDate);
 	}
 	
 	public List<FlightDetails> getAllFlightDetailsBySector(String sectorId){
