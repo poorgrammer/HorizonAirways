@@ -60,6 +60,7 @@ if(request.getParameter("trip").equals("roundtrip")){
 				
 			} catch (ParseException e) {
 				
+				
 				e.printStackTrace();
 			}
 	}

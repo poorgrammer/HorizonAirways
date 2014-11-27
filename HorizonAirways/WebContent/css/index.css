@@ -1,4 +1,35 @@
 @CHARSET "ISO-8859-1";
+table{
+	font-size:1em;
+	
+}
+
+
+
+
+tr:hover{
+	background-color: #8DF0F0;
+
+}
+td{
+
+	padding:5px;
+	text-align:center;
+}
+
+
+
+a{
+	text-decoration:none;
+	
+}
+
+a:hover{
+	color:#003300;
+	weight:bold;
+	text-decoration:underline;
+	
+}
 
 .login > div:first-child {
 	font-size: large;

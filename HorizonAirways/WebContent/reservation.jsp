@@ -82,7 +82,7 @@
              
              <c:forEach items="${flightDetailsList}" var="flightDetails">
 
-             <tr>
+             <tr class="details">
                <td>${flightDetails.flightNo}</td>
                <td>${flightDetails.sectorId}</td>
                <td>${flightDetails.flightDate}</td>
@@ -153,7 +153,7 @@
              </tr>
              
              <c:forEach items="${flightDetailsRoundtrip}" var="flightDetailsRoundtrip">
-             <tr>
+             <tr  class="details">
                <td>${flightDetailsRoundtrip.flightNo}</td>
                <td>${flightDetailsRoundtrip.sectorId}</td>
                <td>${flightDetailsRoundtrip.flightDate}</td>
