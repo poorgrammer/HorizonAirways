@@ -31,8 +31,13 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	private static final String GET_ALL_RESERVED_FLIGHTS_BY_PNR = "SELECT * FROM reservedflights WHERE pnrno = ?";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO_AND_DATE = "SELECT * FROM vwflightschedules WHERE flightNo = ? AND flightDate > ?";
 	private static final String GET_FLIGHT_FARE_BY_SECTOR = "SELECT * FROM flightdetails WHERE sectorid = ?";
-	private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo FROM reservedflights WHERE FlightNo = ? AND FlightDate = ?";
-	
+private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo FROM reservedflights WHERE FlightNo = ? AND FlightDate = ?";
+	private static final String SAVE_PASSENGER_DETAILS = "INSERT INTO passenger VALUES(?,?,?,?,?,?,?,?)";
+	private static final String GET_PASSENGER_PNR = "SELECT pnrno FROM passenger WHERE firstname = ? AND lastname = ? and birthdate = ? AND reservationdate = ?";
+	private static final String SAVE_FLIGHT_RESERVATION = "INSERT INTO reservedflights VALUES(?,?,?,?,?,?,?)";
+	private static final String CANCEL_REGISTRATION = "UPDATE passenger SET cancelflag=1 WHERE pnr = ?";
+	private static final String GET_PASSENGER_BY_PNR = "SELECT * FROM passenger WHERE pnrno = ?";
+
 	public List<FlightSchedule> getAllFlightSchedule() {
 
 		List<FlightSchedule> flightScheduleList = new ArrayList<FlightSchedule>();
@@ -173,13 +178,11 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 
 	
 	public List<Passenger> getAllPassengers() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
 	public List<ReservedFlight> getAllReservedFlights() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -369,6 +372,166 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	}
 
 
+	@Override
+	public int savePassenger(Passenger p) {
+
+		int rows = 0;
+		PreparedStatement ps = null;
+		try {
+			 ps = DatabaseConnector.getConnection().prepareStatement(SAVE_PASSENGER_DETAILS);
+			ps.setString(1, p.getFirstName());
+			ps.setString(2, p.getLastName());
+			ps.setDate(3, new java.sql.Date(p.getBirthDay().getTime()));
+			ps.setString(4, p.getGender());
+			ps.setInt(5, p.isCancelFlag());
+			ps.setString(6, p.getMobileNo());
+			ps.setString(7, p.getEmailAddress());
+			ps.setDate(8, new java.sql.Date(p.getReservationDate().getTime()));
+			rows = ps.executeUpdate();
+		} catch (SQLException e) {
+			if(ps!=null){
+				try {
+					ps.close();
+				} catch (SQLException e1) {
+					
+					e1.printStackTrace();
+				}
+			}
+			e.printStackTrace();
+		}
+		
+		return rows;
+	}
+
+
+	@Override
+	public String getPassengerPNR(Passenger p) {
+		String pnr;
+		
+			pnr = null;
+			PreparedStatement ps = null;
+			try {	ps = DatabaseConnector.getConnection().prepareStatement(GET_PASSENGER_PNR);
+			ps.setString(1, p.getFirstName());
+			ps.setString(2, p.getLastName());
+			ps.setDate(3, new java.sql.Date(p.getBirthDay().getTime()));
+			ps.setDate(4, new java.sql.Date(p.getReservationDate().getTime()));
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				pnr = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			if(ps!=null){
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return pnr;
+	}
+
+
+	@Override
+	public int saveFlightReservation(ReservedFlight reservedFlight) {
+		int rows = 0;
+		PreparedStatement ps = null;
+		try {
+			ps = DatabaseConnector.getConnection().prepareStatement(SAVE_FLIGHT_RESERVATION);
+			ps.setString(1, reservedFlight.getPNRNo());
+			ps.setString(2, reservedFlight.getFlightNo());
+			ps.setDate(3, new java.sql.Date(reservedFlight.getFlightDate().getTime()));
+			ps.setString(4, reservedFlight.getSeatNo());
+			ps.setString(5, reservedFlight.getSeatClass());
+			ps.setString(6, reservedFlight.getMealPreference());
+			ps.setString(7, reservedFlight.getSSR());
+			rows = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			if(ps!=null){
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return rows;
+	}
+
+
+	@Override
+	public int cancelPassengerReservation(String pnr) {
+
+		int rows = 0;
+		PreparedStatement ps = null;
+		try {
+			ps = DatabaseConnector.getConnection().prepareStatement(CANCEL_REGISTRATION);
+			rows = ps.executeUpdate();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally{
+			if(ps!=null){
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+			}
+			
+		}
+		
+		return rows;
+		
+	}
+
+
+	@Override
+	public Passenger getPassengerDetailsByPNR(String pnr) {
+
+		Passenger passenger = null;
+		PreparedStatement ps = null;
+		try {
+			ps = DatabaseConnector.getConnection().prepareStatement(GET_PASSENGER_BY_PNR);
+			ps.setString(1, pnr);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				String pnrNo = rs.getString(1);
+				String firstName = rs.getString(2);
+				String lastName = rs.getString(3);
+				Date birthDay = rs.getDate(4);
+				String gender = rs.getString(5);
+				int cancelFlag = rs.getInt(6);
+				String mobileNo = rs.getString(7);
+				String email = rs.getString(8);
+				Date reservationDate = rs.getDate(9);	
+				passenger = new Passenger(lastName, firstName, birthDay, gender, cancelFlag, mobileNo, email, reservationDate);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			if(ps!=null){
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return passenger;
+		
+	}
+
+
 
 
 
@@ -404,6 +567,13 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		}
 
 		return occupiedSeats;
+	}
+
+
+	@Override
+	public List<Passenger> getAllPassengersByFlight(FlightId id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

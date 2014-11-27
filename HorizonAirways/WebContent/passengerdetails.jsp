@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<c:out value="${firstFlight.flightDate }"></c:out>
+
 	<fieldset>
 
 		<legend>Personal Details Form</legend>

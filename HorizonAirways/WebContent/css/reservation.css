@@ -1,9 +1,50 @@
 @CHARSET "ISO-8859-1";
 
-#roundtrip{
-	display:none;
+table {
+	font-size: 1em;
 }
 
-.filterArea{
+td {
+	padding: 5px;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: #003300;
+	weight: bold;
+	text-decoration: underline;
+}
+
+#roundtrip {
+	display: none;
+}
+
+.filterArea {
 	vertical-align: top;
+}
+
+input[type="radio"]:hover {
+	cursor: pointer;
+}
+
+.reserveButton {
+	float: right;
+	margin-top: 50px;
+	margin-right: 50px;
+	width: 150px;
+	height: 30px;
+	font-size: 1.1em;
+	border: 1px solid Black;
+	background-color: #FFF;
+	color: Black;
+}
+
+input[type="submit"]:hover {
+	cursor: pointer;
+	background-color:Black;
+	color:#FFF;
 }

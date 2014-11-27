@@ -1,6 +1,7 @@
 package com.px1.horizonairways.servlet;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -99,6 +100,7 @@ public class ReservationServlet extends HttpServlet {
 			request.getSession().invalidate();
 			request.getRequestDispatcher("./index.jsp").forward(request, response);
 		}
+		
 
 		request.getRequestDispatcher("reservation.jsp").forward(request, response);
 	}

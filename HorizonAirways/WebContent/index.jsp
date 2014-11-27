@@ -11,23 +11,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/tableDesign.css">
 <title>Horizon Airways</title>
 </head>
 
 <body>
-	<font face="Arial, Helvetica, sans-serif" size="-1"> <!-- LOGIN FORM -->
-
-		<div class="login">
-			<div><p>Horizon Airways</p></div>
+	<font face="Arial, Helvetica, sans-serif" size="-1">
+		<!-- LOGIN FORM -->
+		<div class="header">
+			<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
 			<div>
 			<c:choose>
 				<c:when test="${ empty sessionScope.user}">
 					<form action="./login" method="post">
 						<table>
 							<tr>
-								<td>User Name</td>
+								<td><p>User Name</p></td>
 								<td><input type="text" name="userName" /></td>
-								<td>Password</td>
+								<td><p>Password</p></td>
 								<td><input type="password" name="password" /></td>
 								<td><input type="submit" name="submit" value="Log in" /></td>
 							</tr>
@@ -52,9 +53,7 @@
 			</c:if>
 		</div>
 
-		<hr /> <br/>
-
-		<table width="1024" border="1" class="flightDetails">
+		<table class="flightDetails">
 			<tr>
 				<th rowspan="2" scope="col">Flight No.</th>
 				<th rowspan="2" scope="col">Sector</th>
@@ -66,7 +65,7 @@
 				<th rowspan="2" scope="col">Action</th>
 			</tr>
 
-			<tr>
+			<tr class="classes">
 				<th scope="col">First Class</th>
 				<th scope="col">Business Class</th>
 				<th scope="col">Economy Class</th>
@@ -77,7 +76,6 @@
 
 				<tr class="detailItem">
 					<td class="flightNo">${flightSchedule.flightNo}</td>
-
 					<td>${flightSchedule.sectorId }</td>
 					<td>${flightSchedule.day }</td>
 					<td>${flightSchedule.aircraftType }</td>
@@ -86,7 +84,7 @@
 					<td>${flightSchedule.firstClassFare }</td>
 					<td>${flightSchedule.businessClassFare }</td>
 					<td>${flightSchedule.economyClassFare }</td>
-					<td><a href="./reservation?flightNo=${flightSchedule.flightNo}&amp;sectorId=${flightSchedule.sectorId}">Find a flight</a></td>
+					<td><a href="./reservation?flightNo=${flightSchedule.flightNo}&amp;sectorId=${flightSchedule.sectorId}"><b>Find a flight</b></a></td>
 				</tr>
 
 			</c:forEach>

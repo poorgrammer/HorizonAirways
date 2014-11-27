@@ -16,54 +16,59 @@
 <body>
 <font face="Arial, Helvetica, sans-serif" size="-1">
 
-    
-    <h1>Horizon Airways</h1>
+    <div class="header">
+		<div><p>Horizon Airways</p></div>
+			<div>
+			<c:choose>
+				<c:when test="${ empty sessionScope.user}">
+					<form action="./login" method="post">
+						<table>
+							<tr>
+								<td>User Name</td>
+								<td><input type="text" name="userName" /></td>
+								<td>Password</td>
+								<td><input type="password" name="password" /></td>
+								<td><input type="submit" name="submit" value="Log in" /></td>
+							</tr>
+						</table>
+					</form>
+				</c:when>
+				<c:otherwise>
+					<form>
+						<input type="submit" name="logout" value="Log out" align="right"/>
+					</form>
+				</c:otherwise>
+			</c:choose>
+			</div>
+		</div>
     <hr/>
 
 	<form action="./flightdetails" method="post">
     <table>
       <tr>
-
-
-        <td width="250">
-        
-        <div id="totalCost" style="margin-bottom:10px"><h2>Total Cost: <span id="totalcost"> $ <c:out value="${flightFareMap.values.get(0)}"></c:out></span></h2></div><br/><br/>
       
-   <select name="firstFlightfare">
-      		    <c:forEach items="${sessionScope.flightFareMap}" var="flightFare">
-		 			 <option value="${flightFare.key}">${flightFare.key}</option>
-		 		 </c:forEach>
-			  </select>
-      
-    
-        <td width="250" class="filterArea">
-
-        	<br/>
+        <td class="filterArea">
+			<br/>
             <div>
-           <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> <label for="onewayButton"> One-Way</label> 
-             <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/>   <label for="roundtripButton"> RoundTrip</label>
-      	  </div>    
+           		<input type="radio" name="trip" value="oneway" checked id="onewayButton"/> <label for="onewayButton"> One-Way</label> 
+             	<input type="radio" name="trip" value="roundtrip" id="roundtripButton"/>   <label for="roundtripButton"> Round Trip</label>
+      	  	</div>    
 
-
-            
             <br/><br/>
-            <b>Flight Date:</b>
-
+            <b>Filter Flight Date:</b>
             <br/><br/>
        
-        <select name="month">
-             <c:forEach items="${months}" var="monthyear">
-             <option><c:out value="${monthyear}"/></option>
-               </c:forEach>
+       		<select name="month">
+       			<option>Select Date</option>
+            	<c:forEach items="${months}" var="monthyear">
+             		<option><c:out value="${monthyear}"/></option>
+                </c:forEach>
+            </select>
             <br/><br/>
-
-            <br/>
-
-
     	</td>
         
         <td>
-        	<h3>Flight 1</h3>
+        	<h3>Departure</h3>
         	<table border="1" align="center">
              <tr>
                <th rowspan="2" scope="col">Flight No.</th>
@@ -101,41 +106,25 @@
     </table>
     
     <div id="roundtrip">
-    <hr />
+    <br /> <hr />
       <table>
       <tr>
-
-        <td width="250">
-      
-          
-          
-          
-            <select name="secondFlightfare">
-      		    <c:forEach items="${sessionScope.flightFareMap}" var="flightFare">
-		 			 <option value="${flightFare.key}">${flightFare.key}</option>
-		 		 </c:forEach>
-			  </select>
-          
-            <br/>
-
-        <td width="250" class="filterArea">
-
- 
-
+        <td class="filterArea">
+			<br/>
             <b>Flight Date:</b>
-            <br/>
-            
+
+            <br/><br/>
+       
        		<select name="month">
             	<c:forEach items="${months}" var="monthyear">
-             		<option><c:out value="${monthyear}"/></option>>
-            	</c:forEach>
+             		<option><c:out value="${monthyear}"/></option>
+                </c:forEach>
             </select>
-            
-            <input type="submit" name="submit" value="Search" align="right"/>
+            <br/><br/>
     	</td>
         
         <td>
-        	<h3>Flight 2</h3>
+        	<h3>Return</h3>
         	<table border="1" align="center">
              <tr>
                <th rowspan="2" scope="col">Flight No.</th>
@@ -173,9 +162,8 @@
     
     </div>
     
-    
-
-<input type="submit" value="Reserve the flight!"></input>
+    <br />
+	<input type="submit" value="Reserve the flight!" class="submitButton" />
 </form>
 </font>
 <script src="js/reservation.js"></script>
