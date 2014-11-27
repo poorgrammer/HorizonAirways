@@ -49,11 +49,11 @@
 
         <td width="250">
         
-        <div id="totalCost" style="margin-bottom:10px"><h2>Total Cost: <span id="totalcost"> $ <c:out value="${flightFareMap.values.get(0)}"></c:out></span></h2></div><br/><br/>
+        <div id="totalCost" style="margin-bottom:10px">Total Cost: $</div><br/><br/>
       
-   <select name="firstFlightfare">
+   <select name="firstFlightfare" id="firstFlightFare">
       		    <c:forEach items="${sessionScope.flightFareMap}" var="flightFare">
-		 			 <option value="${flightFare.key}">${flightFare.key}</option>
+		 			 <option value="${flightFare.value}">${flightFare.key}</option>
 		 		 </c:forEach>
 			  </select>
       
@@ -132,9 +132,9 @@
           
           
           
-            <select name="secondFlightfare">
+            <select name="secondFlightfare" id="secondFlightFare">
       		    <c:forEach items="${sessionScope.flightFareMap}" var="flightFare">
-		 			 <option value="${flightFare.key}">${flightFare.key}</option>
+		 			 <option value="${flightFare.value}">${flightFare.key}</option>
 		 		 </c:forEach>
 			  </select>
           
