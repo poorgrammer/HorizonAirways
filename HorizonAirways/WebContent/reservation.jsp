@@ -5,6 +5,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.math.BigDecimal" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="stylesheet" href="css/reservation.css"/>
@@ -25,10 +26,19 @@
     <table>
       <tr>
         <td width="250">
+        
+        <div id="totalCost" style="margin-bottom:10px"><h2>Total Cost: <span id="totalcost"> $ <c:out value="${flightFareMap.values.get(0)}"></c:out></span></h2></div><br/><br/>
       
+   <select name="firstFlightfare">
+      		    <c:forEach items="${sessionScope.flightFareMap}" var="flightFare">
+		 			 <option value="${flightFare.key}">${flightFare.key}</option>
+		 		 </c:forEach>
+			  </select>
+      
+      <div>
            <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> <label for="onewayButton"> One-Way</label> 
              <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/>   <label for="roundtripButton"> RoundTrip</label>
-            
+        </div>    
             
             <br/>
             <b>Flight Date:</b>
@@ -84,6 +94,14 @@
       <tr>
         <td width="250">
       
+          
+          
+          
+            <select name="secondFlightfare">
+      		    <c:forEach items="${sessionScope.flightFareMap}" var="flightFare">
+		 			 <option value="${flightFare.key}">${flightFare.key}</option>
+		 		 </c:forEach>
+			  </select>
           
             <br/>
             <b>Flight Date:</b>
