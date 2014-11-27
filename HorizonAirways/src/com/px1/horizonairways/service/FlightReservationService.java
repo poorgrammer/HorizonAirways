@@ -62,7 +62,7 @@ public class FlightReservationService {
 		return da.cancelPassengerReservation(pnr);
 	}
 	
-	public Passenger gerPassengerDetailsByPNR(String pnr){
+	public Passenger getPassengerDetailsByPNR(String pnr){
 		return da.getPassengerDetailsByPNR(pnr);
 	}
 }

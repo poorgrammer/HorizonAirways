@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" href="css/cancel.css">
 <title>Horizon Airways</title>
 </head>
 <body>

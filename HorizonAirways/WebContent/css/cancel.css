@@ -13,6 +13,7 @@ color:Black;
 
 }
 fieldset{
+	margin-top:20px;
 	padding:10px;
 }
 
@@ -39,6 +40,7 @@ input[type="text"], input[type="date"], textarea, input[type="email"] {
 	width:200px;
 	border:1px solid black;
 	background-color: White;
+	margin-bottom:5px;
 }
 
 textarea{
@@ -57,7 +59,7 @@ text-align:center;
 input[type="submit"]{
 	display:inline;
 background-color:White;
-width:70px;
+width:200px;
 border:1px solid black;
 
 	
