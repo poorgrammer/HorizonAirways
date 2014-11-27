@@ -45,7 +45,7 @@
 	<form action="./flightdetails" method="post">
     <table>
       <tr>
-<<<<<<< HEAD
+
 
         <td width="250">
         
@@ -59,9 +59,7 @@
       
     
         <td width="250" class="filterArea">
-=======
-        <td width="300" class="filterArea">
->>>>>>> refs/remotes/origin/master
+
         	<br/>
             <div>
            <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> <label for="onewayButton"> One-Way</label> 
@@ -128,7 +126,6 @@
     <hr />
       <table>
       <tr>
-<<<<<<< HEAD
 
         <td width="250">
       
