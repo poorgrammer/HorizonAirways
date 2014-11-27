@@ -25,19 +25,18 @@
     <table>
       <tr>
         <td width="250">
-      
-             <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> One-Way
-                <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/> Round Trip
+            <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> One-Way
+            <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/> Round Trip
             
             <br/>
             <b>Flight Date:</b>
-            <br/><br/>
-       
-        <select name="month">
-             <c:forEach items="${months}" var="monthyear">
-             <option><c:out value="${monthyear}"/></option>>
-               </c:forEach>
-            <br/><br/>
+            
+       		<select name="month">
+            	<c:forEach items="${months}" var="monthyear">
+             		<option><c:out value="${monthyear}"/></option>>
+            	</c:forEach>
+            </select>
+            
             <input type="submit" name="submit" value="Search" align="right"/>
     
     	</td>
