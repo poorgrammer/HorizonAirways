@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.px1.horizonairways.daimpl.ReservationDA;
 import com.px1.horizonairways.entity.FlightDetails;
@@ -38,6 +39,7 @@ public class ReservationServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
 		String flightNo = request.getParameter("flightNo");
 		String sectorId = request.getParameter("sectorId");
 	
@@ -46,6 +48,8 @@ public class ReservationServlet extends HttpServlet {
 		ReservationDA da = new ReservationDA();
 		service.setDa(da);
 		Map<String, BigDecimal> flightFareMap = service.getFlightFareBySectorId(sectorId);
+		session.setAttribute("flightFareMap", flightFareMap);
+		
 		Date date = new Date();
 		Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
 		calendar.setTime(date);
@@ -81,16 +85,21 @@ public class ReservationServlet extends HttpServlet {
 			
 		}
 
-		request.getSession().setAttribute("flightDetailsList", flightDetailsList);
-		request.getSession().setAttribute("flightDetailsRoundtrip", flightDetailsRoundtrip);
+		session.setAttribute("flightDetailsList", flightDetailsList);
+		session.setAttribute("flightDetailsRoundtrip", flightDetailsRoundtrip);
 		
-		request.getSession().setAttribute("firstFlightNo",flightDetailsList.get(0).getFlightNo());
-		request.getSession().setAttribute("secondFlightNo",flightDetailsRoundtrip.get(0).getFlightNo());
+		session.setAttribute("firstFlightNo",flightDetailsList.get(0).getFlightNo());
+		session.setAttribute("secondFlightNo",flightDetailsRoundtrip.get(0).getFlightNo());
 	
-		request.getSession().setAttribute("months", months);
+
+		session.setAttribute("months", months);
+
+		
 		if(request.getParameter("logout")!=null) {
 			request.getSession().invalidate();
+			request.getRequestDispatcher("./index.jsp").forward(request, response);
 		}
+
 		request.getRequestDispatcher("reservation.jsp").forward(request, response);
 	}
 

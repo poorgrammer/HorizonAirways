@@ -49,9 +49,9 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 				String aircraftDescription = rs.getString(5);
 				String depTime = rs.getString(6);
 				String arrTime = rs.getString(7);
-				BigDecimal firstClassFare = rs.getBigDecimal(8);
-				BigDecimal businessClassFare = rs.getBigDecimal(9);
-				BigDecimal economyClassFare = rs.getBigDecimal(10);
+				BigDecimal firstClassFare = rs.getBigDecimal(8).setScale(2,BigDecimal.ROUND_HALF_UP);
+				BigDecimal businessClassFare = rs.getBigDecimal(9).setScale(2,BigDecimal.ROUND_HALF_UP);
+				BigDecimal economyClassFare = rs.getBigDecimal(10).setScale(2,BigDecimal.ROUND_HALF_UP);
 
 				FlightSchedule flightSchedule = new FlightSchedule(flightNo,
 						sectorId, weekDayOne + "/" + weekDayTwo,
@@ -296,13 +296,13 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 			ResultSet rs = stat.executeQuery();
 
 			while (rs.next()) {
-		BigDecimal firstClassFare = rs.getBigDecimal(1);
-		BigDecimal businessClassFare = rs.getBigDecimal(2);
-		BigDecimal economyClassFare = rs.getBigDecimal(3);
+		BigDecimal firstClassFare = rs.getBigDecimal(7).setScale(2,BigDecimal.ROUND_HALF_UP);
+		BigDecimal businessClassFare = rs.getBigDecimal(8).setScale(2,BigDecimal.ROUND_HALF_UP);
+		BigDecimal economyClassFare = rs.getBigDecimal(9).setScale(2,BigDecimal.ROUND_HALF_UP);
 		
-		flightFareMap.put("firstClassFare", firstClassFare);
-		flightFareMap.put("businessClassFare", businessClassFare);
-		flightFareMap.put("economyClassFare", economyClassFare);
+		flightFareMap.put("First Class - $" + firstClassFare, firstClassFare);
+		flightFareMap.put("Business Class - $" + businessClassFare, businessClassFare);
+		flightFareMap.put("Economy Class - $" + economyClassFare, economyClassFare);
 		
 	}
 			
