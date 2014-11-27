@@ -10,28 +10,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/index.css">
+<title>Horizon Airways</title>
 </head>
-<style>
-div.login > div:first-child {
-	font-size: large;
-	font-weight: bold;
-	display: inline-flex;
-	justify-content: flex-start;
-	width: 49%;
-}
-
-div.login > div:last-child {
-	display: inline-flex;
-	justify-content: flex-end;
-	width: 50%;
-}
-
-table.flightDetails{
-	vertical-align: middle;
-	margin-left: auto;
-    margin-right: auto;
-}
-</style>
 
 <body>
 	<font face="Arial, Helvetica, sans-serif" size="-1"> <!-- LOGIN FORM -->
@@ -54,7 +35,9 @@ table.flightDetails{
 					</form>
 				</c:when>
 				<c:otherwise>
-					<input type="submit" name="submit" value="Log out" align="right"/>
+					<form>
+						<input type="submit" name="logout" value="Log out" align="right"/>
+					</form>
 				</c:otherwise>
 			</c:choose>
 			</div>

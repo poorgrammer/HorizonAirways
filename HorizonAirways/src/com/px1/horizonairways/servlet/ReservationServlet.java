@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import com.px1.horizonairways.daimpl.ReservationDA;
 import com.px1.horizonairways.entity.FlightDetails;
+import com.px1.horizonairways.entity.User;
 import com.px1.horizonairways.service.FlightReservationService;
 
 /**
@@ -90,7 +91,15 @@ public class ReservationServlet extends HttpServlet {
 		session.setAttribute("firstFlightNo",flightDetailsList.get(0).getFlightNo());
 		session.setAttribute("secondFlightNo",flightDetailsRoundtrip.get(0).getFlightNo());
 	
+
 		session.setAttribute("months", months);
+
+		
+		if(request.getParameter("logout")!=null) {
+			request.getSession().invalidate();
+			request.getRequestDispatcher("./index.jsp").forward(request, response);
+		}
+
 		request.getRequestDispatcher("reservation.jsp").forward(request, response);
 	}
 

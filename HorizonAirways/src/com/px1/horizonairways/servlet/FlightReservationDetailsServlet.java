@@ -74,6 +74,12 @@ else {
 	}	
 }
 
+
+if(request.getParameter("logout")!=null) {
+	request.getSession().invalidate();
+	request.getRequestDispatcher("./index.jsp").forward(request, response);
+}
+
 request.getRequestDispatcher("./passengerdetails.jsp").forward(request, response);
 		
 	}

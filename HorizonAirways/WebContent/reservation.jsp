@@ -18,13 +18,34 @@
 
     
     <h1>Horizon Airways</h1>
-    
+    <div>
+			<c:choose>
+				<c:when test="${ empty sessionScope.user}">
+					<form action="./login" method="post">
+						<table>
+							<tr>
+								<td>User Name</td>
+								<td><input type="text" name="userName" /></td>
+								<td>Password</td>
+								<td><input type="password" name="password" /></td>
+								<td><input type="submit" name="submit" value="Log in" /></td>
+							</tr>
+						</table>
+					</form>
+				</c:when>
+				<c:otherwise>
+					<form>
+						<input type="submit" name="logout" value="Log out" align="right"/>
+					</form>
+				</c:otherwise>
+			</c:choose>
+			</div>
     <hr/>
-    
 
 	<form action="./flightdetails" method="post">
     <table>
       <tr>
+
         <td width="250">
         
         <div id="totalCost" style="margin-bottom:10px"><h2>Total Cost: <span id="totalcost"> $ <c:out value="${flightFareMap.values.get(0)}"></c:out></span></h2></div><br/><br/>
@@ -35,13 +56,19 @@
 		 		 </c:forEach>
 			  </select>
       
-      <div>
+    
+        <td width="250" class="filterArea">
+        	<br/>
+            <div>
            <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> <label for="onewayButton"> One-Way</label> 
              <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/>   <label for="roundtripButton"> RoundTrip</label>
-        </div>    
+      	  </div>    
+
+
             
-            <br/>
+            <br/><br/>
             <b>Flight Date:</b>
+
             <br/><br/>
        
         <select name="month">
@@ -49,11 +76,14 @@
              <option><c:out value="${monthyear}"/></option>
                </c:forEach>
             <br/><br/>
-            <input type="submit" name="submit" value="Search" align="right"/>
-    
+
+            <br/>
+
+
     	</td>
         
         <td>
+        	<h3>Flight 1</h3>
         	<table border="1" align="center">
              <tr>
                <th rowspan="2" scope="col">Flight No.</th>
@@ -71,7 +101,7 @@
              </tr>
              
              <c:forEach items="${flightDetailsList}" var="flightDetails">
-              
+
              <tr>
                <td>${flightDetails.flightNo}</td>
                <td>${flightDetails.sectorId}</td>
@@ -92,6 +122,7 @@
     <div id="roundtrip">
         <table>
       <tr>
+
         <td width="250">
       
           
@@ -104,20 +135,25 @@
 			  </select>
           
             <br/>
+
+        <td width="250" class="filterArea">
+        	<br/>
+ 
+
             <b>Flight Date:</b>
-            <br/><br/>
-           
-        <select name="month">
-             <c:forEach items="${months}" var="monthyear">
-             <option><c:out value="${monthyear}"/></option>>
-               </c:forEach>
-            <br/><br/>
+            <br/>
+            
+       		<select name="month">
+            	<c:forEach items="${months}" var="monthyear">
+             		<option><c:out value="${monthyear}"/></option>>
+            	</c:forEach>
+            </select>
+            
             <input type="submit" name="submit" value="Search" align="right"/>
-    
-      
     	</td>
         
         <td>
+        	<h3>Flight 2</h3>
         	<table border="1" align="center">
              <tr>
                <th rowspan="2" scope="col">Flight No.</th>

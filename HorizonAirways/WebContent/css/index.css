@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+
+.login > div:first-child {
+	font-size: large;
+	font-weight: bold;
+	display: inline-flex;
+	justify-content: flex-start;
+	width: 49%;
+}
+
+.login > div:last-child {
+	display: inline-flex;
+	justify-content: flex-end;
+	width: 50%;
+}
+
+.flightDetails{
+	vertical-align: middle;
+	margin-left: auto;
+    margin-right: auto;
+}
