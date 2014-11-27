@@ -9,6 +9,7 @@ import com.px1.horizonairways.daimpl.ReservationDA;
 import com.px1.horizonairways.entity.FlightDetails;
 import com.px1.horizonairways.entity.FlightId;
 import com.px1.horizonairways.entity.FlightSchedule;
+import com.px1.horizonairways.entity.Passenger;
 
 public class FlightReservationService {
 
@@ -41,5 +42,9 @@ public class FlightReservationService {
 	
 	public FlightDetails getFlightDetailsById(FlightId id){
 		return da.getFlightDetails(id);
+	}
+	
+	public int insertPassengerDetails(Passenger p){
+		return da.savePassenger(p);
 	}
 }
