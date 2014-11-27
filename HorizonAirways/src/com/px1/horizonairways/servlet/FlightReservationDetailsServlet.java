@@ -74,9 +74,6 @@ else {
 	}	
 }
 
-System.out.println(((FlightDetails)session.getAttribute("firstFlight")).getFlightNo() + " " + ((FlightDetails)session.getAttribute("firstFlight")).getFlightDate());
-System.out.println(((FlightDetails)session.getAttribute("secondFlight")).getFlightNo());
-
 request.getRequestDispatcher("./passengerdetails.jsp").forward(request, response);
 		
 	}

@@ -15,7 +15,7 @@
 <body>
 <font face="Arial, Helvetica, sans-serif" size="-1">
 
-    <br/>
+    
     <h1>Horizon Airways</h1>
     
     <hr/>
@@ -26,8 +26,9 @@
       <tr>
         <td width="250">
       
-             <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> One-Way
-                <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/> Round Trip
+           <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> <label for="onewayButton"> One-Way</label> 
+             <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/>   <label for="roundtripButton"> RoundTrip</label>
+            
             
             <br/>
             <b>Flight Date:</b>
@@ -35,7 +36,7 @@
        
         <select name="month">
              <c:forEach items="${months}" var="monthyear">
-             <option><c:out value="${monthyear}"/></option>>
+             <option><c:out value="${monthyear}"/></option>
                </c:forEach>
             <br/><br/>
             <input type="submit" name="submit" value="Search" align="right"/>
@@ -60,7 +61,7 @@
              </tr>
              
              <c:forEach items="${flightDetailsList}" var="flightDetails">
-               <
+              
              <tr>
                <td>${flightDetails.flightNo}</td>
                <td>${flightDetails.sectorId}</td>

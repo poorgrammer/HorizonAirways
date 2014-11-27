@@ -45,6 +45,8 @@ public class ReservationServlet extends HttpServlet {
 		ReservationDA da = new ReservationDA();
 		service.setDa(da);
 		Map<String, BigDecimal> flightFareMap = service.getFlightFareBySectorId(sectorId);
+		
+		
 		Date date = new Date();
 		Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
 		calendar.setTime(date);
