@@ -44,7 +44,12 @@ public class FlightReservationService {
 		return da.getFlightDetails(id);
 	}
 	
-	public int insertPassengerDetails(Passenger p){
-		return da.savePassenger(p);
+	public int insertPassengerDetails(Passenger passenger){
+		return da.savePassenger(passenger);
+	}
+	
+	public int saveReservationDetails(Passenger passenger, FlightDetails flightDetails){
+		return da.saveFlightReservation(passenger, flightDetails);
+		
 	}
 }

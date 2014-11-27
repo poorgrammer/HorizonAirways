@@ -33,7 +33,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	private static final String GET_FLIGHT_FARE_BY_SECTOR = "SELECT * FROM flightdetails WHERE sectorid = ?";
 	private static final String SAVE_PASSENGER_DETAILS = "INSERT INTO passenger VALUES(?,?,?,?,?,?,?,?)";
 	private static final String GET_PASSENGER_PNR = "SELECT pnrno FROM passenger WHERE firstname = ? AND lastname = ? and birthdate = ? AND reservationdate = ?";
-	
+	private static final String SAVE_FLIGHT_RESERVATION = "INSERT INTO reservedflights VALUES(?,?,?,?,?,?,?)";
 	
 	public List<FlightSchedule> getAllFlightSchedule() {
 
@@ -434,6 +434,37 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		}
 		
 		return pnr;
+	}
+
+
+	@Override
+	public int saveFlightReservation(Passenger passenger,
+			FlightDetails flightDetails) {
+		int rows = 0;
+		PreparedStatement ps = null;
+		try {
+			ps = DatabaseConnector.getConnection().prepareStatement(SAVE_FLIGHT_RESERVATION);
+			ps.setString(1, passenger.getPnr());
+			ps.setString(2, flightDetails.getFlightNo());
+			ps.setDate(3, new java.sql.Date(flightDetails.getFlightDate().getTime()));
+			ps.setString(4, passenger.getSeatNo());
+			ps.setString(5, passenger.getSeatClass());
+			ps.setString(6, passenger.getMeal());
+			ps.setString(7, passenger.getSSR());
+			rows = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			if(ps!=null){
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return rows;
 	}
 
 

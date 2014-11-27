@@ -11,12 +11,7 @@ public class Main {
 		
 		ReservationDA da = new ReservationDA();
 
-		
 
-			Passenger p = new Passenger("1", "asda",  "asda", new Date(), "M", 0, "12343243",  "asda", new Date());
-
-		
-	System.out.println(da.getPassengerPNR(p));
 
 	}
 

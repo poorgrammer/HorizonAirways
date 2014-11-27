@@ -13,15 +13,18 @@ public class Passenger {
 	private String mobileNo;
 	private String emailAddress;
 	private Date reservationDate;
+	private String seatNo;
+	private String seatClass;
+	private String meal;
+	private String SSR;
 
 	public Passenger() {
 	}
 
-	public Passenger(String pnr, String lastName, String firstName,
+	public Passenger(String lastName, String firstName,
 			Date birthDay, String gender, int cancelFlag, String mobileNo,
-			String emailAddress, Date reservationDate) {
+			String emailAddress, Date reservationDate, String seatNo, String seatClass, String meal,String SSR) {
 		super();
-		this.pnr = pnr;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.birthDay = birthDay;
@@ -30,6 +33,10 @@ public class Passenger {
 		this.mobileNo = mobileNo;
 		this.emailAddress = emailAddress;
 		this.reservationDate = reservationDate;
+		this.seatNo = seatNo;
+		this.seatClass = seatClass;
+		this.meal = meal;
+		this.SSR = SSR;
 	}
 
 	public String getPnr() {
@@ -103,5 +110,41 @@ public class Passenger {
 	public void setReservationDate(Date reservationDate) {
 		this.reservationDate = reservationDate;
 	}
+
+	public String getSeatNo() {
+		return seatNo;
+	}
+
+	public void setSeatNo(String seatNo) {
+		this.seatNo = seatNo;
+	}
+
+	public String getSeatClass() {
+		return seatClass;
+	}
+
+	public void setSeatClass(String seatClass) {
+		this.seatClass = seatClass;
+	}
+
+	public String getMeal() {
+		return meal;
+	}
+
+	public void setMeal(String meal) {
+		this.meal = meal;
+	}
+
+	public String getSSR() {
+		return SSR;
+	}
+
+	public void setSSR(String sSR) {
+		SSR = sSR;
+	}
+
+	
+	
+	
 	
 }
