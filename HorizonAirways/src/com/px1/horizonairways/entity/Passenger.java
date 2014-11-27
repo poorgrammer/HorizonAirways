@@ -12,6 +12,7 @@ public class Passenger {
 	private boolean cancelFlag;
 	private String mobileNo;
 	private String emailAddress;
+
 	
 	public Passenger() {
 	}

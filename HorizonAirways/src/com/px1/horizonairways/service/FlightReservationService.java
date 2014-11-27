@@ -30,8 +30,8 @@ public class FlightReservationService {
 		return da.getAllFlightDetailsByFlightNoAndDate(flightNo, flightDate);
 	}
 	
-	public List<FlightDetails> getAllFlightDetailsBySector(String sectorId){
-		return da.getAllFlightDetailsBySector(sectorId);
+	public List<FlightDetails> getAllFlightDetailsBySector(String sectorId,Date d){
+		return da.getAllFlightDetailsBySector(sectorId,d);
 	}
 	
 	public Map<String, BigDecimal> getFlightFareBySectorId(String sectorId){

@@ -1,0 +1,80 @@
+@CHARSET "ISO-8859-1";
+
+*{
+	
+}
+
+
+body{
+	
+	width:30%;
+color:Black;
+
+
+}
+fieldset{
+	padding:10px;
+}
+
+legend{
+	text-align:center;
+	
+}
+div{
+	margin-bottom:5px;
+	
+}
+
+
+label{
+display:block;
+	width:120px;
+	float:left;
+	text-align:right;
+	margin-right:20px;
+	
+}
+
+input[type="text"], input[type="date"], textarea{
+	width:200px;
+	border:1px solid black;
+	background-color: White;
+}
+
+textarea{
+	height:70px;
+	width:195px;
+	resize:none;
+}
+div.button{
+width:250px;clear:both;
+	margin:10px auto 0px auto;
+	overflow:auto;
+text-align:center;
+
+}
+
+input[type="submit"]{
+	display:inline;
+background-color:White;
+width:70px;
+border:1px solid black;
+
+	
+}
+
+
+
+input[type="submit"]:hover{
+	cursor:pointer;
+	background-color:Black;
+	color:White;
+}
+
+input[type="date"]{
+	text-transform:uppercase;
+
+}
+
+
+

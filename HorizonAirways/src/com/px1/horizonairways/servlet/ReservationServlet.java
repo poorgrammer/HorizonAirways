@@ -57,7 +57,7 @@ public class ReservationServlet extends HttpServlet {
 		
 		List<FlightDetails> flightDetailsList = service.getAllFlightDetailsByNumAndDate(flightNo,date);
 		String roundtripSector = sectorId.substring(3) + sectorId.charAt(2) + sectorId.substring(0,2);
-		List<FlightDetails> flightDetailsRoundtrip = service.getAllFlightDetailsBySector(roundtripSector);
+		List<FlightDetails> flightDetailsRoundtrip = service.getAllFlightDetailsBySector(roundtripSector,date);
 		
 		String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	    List<String> months = new ArrayList<String>();

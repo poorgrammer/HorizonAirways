@@ -114,17 +114,17 @@
                <th scope="col">Economy Class</th>
              </tr>
              
-             <c:forEach items="${flightDetailsList}" var="flightDetails">
+             <c:forEach items="${flightDetailsRoundtrip}" var="flightDetailsRoundtrip">
              <tr>
-               <td>${flightDetails.flightNo}</td>
-               <td>${flightDetails.sectorId}</td>
-               <td>${flightDetails.flightDate}</td>
-               <td>${flightDetails.aircraftType}</td>
-               <td>${flightDetails.departureTime}</td>
-               <td>${flightDetails.arrivalTime}</td>
-               <td>${flightDetails.firstClassSeatsAvailable}</td>
-               <td>${flightDetails.businessClassSeatsAvailable}</td>
-               <td>${flightDetails.economyClassSeatsAvailable}</td>
+               <td>${flightDetailsRoundtrip.flightNo}</td>
+               <td>${flightDetailsRoundtrip.sectorId}</td>
+               <td>${flightDetailsRoundtrip.flightDate}</td>
+               <td>${flightDetailsRoundtrip.aircraftType}</td>
+               <td>${flightDetailsRoundtrip.departureTime}</td>
+               <td>${flightDetailsRoundtrip.arrivalTime}</td>
+               <td>${flightDetailsRoundtrip.firstClassSeatsAvailable}</td>
+               <td>${flightDetailsRoundtrip.businessClassSeatsAvailable}</td>
+               <td>${flightDetailsRoundtrip.economyClassSeatsAvailable}</td>
              </tr>
              </c:forEach>
            </table> 
@@ -135,8 +135,9 @@
     </div>
     
     
-</font>
 
+<a href="./passengerdetails.jsp">Reserve the flight.</a>
+</font>
 <script src="js/reservation.js"></script>
 </body>
 </html>
