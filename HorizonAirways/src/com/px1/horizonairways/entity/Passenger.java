@@ -13,7 +13,6 @@ public class Passenger {
 	private String mobileNo;
 	private String emailAddress;
 
-	
 	public Passenger() {
 	}
 

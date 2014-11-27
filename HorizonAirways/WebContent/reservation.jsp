@@ -40,30 +40,30 @@
 			</c:choose>
 			</div>
     <hr/>
-    
 
 	<form action="./flightdetails" method="post">
     <table>
       <tr>
-        <td width="250">
-      
-             <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> One-Way
-                <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/> Round Trip
+        <td width="250" class="filterArea">
+        	<br/>
+            <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> One-Way
+            <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/> Round Trip
             
-            <br/>
+            <br/><br/>
             <b>Flight Date:</b>
-            <br/><br/>
-       
-        <select name="month">
-             <c:forEach items="${months}" var="monthyear">
-             <option><c:out value="${monthyear}"/></option>>
-               </c:forEach>
-            <br/><br/>
+            <br/>
+            
+       		<select name="month">
+            	<c:forEach items="${months}" var="monthyear">
+             		<option><c:out value="${monthyear}"/></option>>
+            	</c:forEach>
+            </select>
+            
             <input type="submit" name="submit" value="Search" align="right"/>
-    
     	</td>
         
         <td>
+        	<h3>Flight 1</h3>
         	<table border="1" align="center">
              <tr>
                <th rowspan="2" scope="col">Flight No.</th>
@@ -81,7 +81,7 @@
              </tr>
              
              <c:forEach items="${flightDetailsList}" var="flightDetails">
-               <
+               
              <tr>
                <td>${flightDetails.flightNo}</td>
                <td>${flightDetails.sectorId}</td>
@@ -102,24 +102,26 @@
     <div id="roundtrip">
         <table>
       <tr>
-        <td width="250">
-      
-          
-            <br/>
+        <td width="250" class="filterArea">
+        	<br/>
+            <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> One-Way
+            <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/> Round Trip
+            
+            <br/><br/>
             <b>Flight Date:</b>
-            <br/><br/>
-           
-        <select name="month">
-             <c:forEach items="${months}" var="monthyear">
-             <option><c:out value="${monthyear}"/></option>>
-               </c:forEach>
-            <br/><br/>
+            <br/>
+            
+       		<select name="month">
+            	<c:forEach items="${months}" var="monthyear">
+             		<option><c:out value="${monthyear}"/></option>>
+            	</c:forEach>
+            </select>
+            
             <input type="submit" name="submit" value="Search" align="right"/>
-    
-      
     	</td>
         
         <td>
+        	<h3>Flight 2</h3>
         	<table border="1" align="center">
              <tr>
                <th rowspan="2" scope="col">Flight No.</th>
