@@ -1,6 +1,6 @@
 @CHARSET "ISO-8859-1";
 
-div.login > div:first-child {
+.login > div:first-child {
 	font-size: large;
 	font-weight: bold;
 	display: inline-flex;
@@ -8,13 +8,13 @@ div.login > div:first-child {
 	width: 49%;
 }
 
-div.login > div:last-child {
+.login > div:last-child {
 	display: inline-flex;
 	justify-content: flex-end;
 	width: 50%;
 }
 
-table.flightDetails{
+.flightDetails{
 	vertical-align: middle;
 	margin-left: auto;
     margin-right: auto;
