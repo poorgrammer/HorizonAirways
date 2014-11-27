@@ -52,4 +52,8 @@ public class FlightReservationService {
 		return da.saveFlightReservation(passenger, flightDetails);
 		
 	}
+	
+	public String getPassengerPNR(Passenger passenger){
+		return da.getPassengerPNR(passenger);
+	}
 }

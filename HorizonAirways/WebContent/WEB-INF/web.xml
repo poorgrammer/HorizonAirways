@@ -58,4 +58,14 @@
     <servlet-name>FlightReservationDetailsServlet</servlet-name>
     <url-pattern>/flightdetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReservationCompletionServlet</display-name>
+    <servlet-name>ReservationCompletionServlet</servlet-name>
+    <servlet-class>com.px1.horizonairways.servlet.ReservationCompletionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReservationCompletionServlet</servlet-name>
+    <url-pattern>/reservationCompletion</url-pattern>
+  </servlet-mapping>
 </web-app>
