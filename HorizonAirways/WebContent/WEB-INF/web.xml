@@ -68,4 +68,8 @@
     <servlet-name>ReservationCompletionServlet</servlet-name>
     <url-pattern>/reservationCompletion</url-pattern>
   </servlet-mapping>
+ <!--<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/errorpage.jsp</location>
+	</error-page>  --> 
 </web-app>
