@@ -120,10 +120,9 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 
 	}
 
-	public List<FlightDetails> getFlightDetails(FlightId flightId) {
+	public FlightDetails getFlightDetails(FlightId flightId) {
 
-		List<FlightDetails> flightDetailsList = new ArrayList<FlightDetails>();
-
+		FlightDetails flightDetails = null;
 		PreparedStatement ps = null;
 		try {
 			ps = DatabaseConnector.getConnection().prepareStatement(
@@ -144,12 +143,12 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 				int businessClassFare = rs.getInt(8);
 				int economyClassFare = rs.getInt(9);
 
-				FlightDetails flightDetails = new FlightDetails(flightNo,
+				 flightDetails = new FlightDetails(flightNo,
 						sectorId, flightDate, aircraftDescription, depTime,
 						arrTime, firstClassFare, businessClassFare,
 						economyClassFare);
 
-				flightDetailsList.add(flightDetails);
+		
 
 			}
 		} catch (SQLException e) {
@@ -167,7 +166,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 			}
 		}
 
-		return flightDetailsList;
+		return flightDetails;
 
 	}
 

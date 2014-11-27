@@ -56,11 +56,16 @@ public class ReservationServlet extends HttpServlet {
 		date = calendar.getTime();
 		
 		List<FlightDetails> flightDetailsList = service.getAllFlightDetailsByNumAndDate(flightNo,date);
+		
+		calendar.setTime(date);
+		calendar.add(Calendar.DATE, 1);
+		date = calendar.getTime();
+		
 		String roundtripSector = sectorId.substring(3) + sectorId.charAt(2) + sectorId.substring(0,2);
 		List<FlightDetails> flightDetailsRoundtrip = service.getAllFlightDetailsBySector(roundtripSector,date);
 		
 		String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-	    List<String> months = new ArrayList<String>();
+		List<String> months = new ArrayList<String>();
 	    calendar = Calendar.getInstance();
 		for(int i = 0; i<4; i++){
 			int month = calendar.get(Calendar.MONTH)+i;
@@ -75,11 +80,12 @@ public class ReservationServlet extends HttpServlet {
 			
 		}
 
-		request.setAttribute("flightDetailsList", flightDetailsList);
-		request.setAttribute("flightDetailsRoundtrip", flightDetailsRoundtrip);
-		request.setAttribute("flightNo", flightNo);
-		request.setAttribute("flightFareMap", flightFareMap);
-		request.setAttribute("sectorId", sectorId);
+		request.getSession().setAttribute("flightDetailsList", flightDetailsList);
+		request.getSession().setAttribute("flightDetailsRoundtrip", flightDetailsRoundtrip);
+		
+		request.getSession().setAttribute("firstFlightNo",flightDetailsList.get(0).getFlightNo());
+		request.getSession().setAttribute("secondFlightNo",flightDetailsRoundtrip.get(0).getFlightNo());
+	
 		request.getSession().setAttribute("months", months);
 		request.getRequestDispatcher("reservation.jsp").forward(request, response);
 	}

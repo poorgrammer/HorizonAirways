@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.px1.horizonairways.daimpl.ReservationDA;
 import com.px1.horizonairways.entity.FlightDetails;
+import com.px1.horizonairways.entity.FlightId;
 import com.px1.horizonairways.entity.FlightSchedule;
 
 public class FlightReservationService {
@@ -36,5 +37,9 @@ public class FlightReservationService {
 	
 	public Map<String, BigDecimal> getFlightFareBySectorId(String sectorId){
 		return da.getFlightFareBySector(sectorId);
+	}
+	
+	public FlightDetails getFlightDetailsById(FlightId id){
+		return da.getFlightDetails(id);
 	}
 }

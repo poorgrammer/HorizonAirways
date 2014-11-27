@@ -1,8 +1,9 @@
 package com.px1.horizonairways.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class FlightSchedule {
+public class FlightSchedule  implements Serializable{
 	
 	private String flightNo;
 	private String sectorId;
