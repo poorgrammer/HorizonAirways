@@ -31,6 +31,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	private static final String GET_ALL_RESERVED_FLIGHTS_BY_PNR = "SELECT * FROM reservedflights WHERE pnrno = ?";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO_AND_DATE = "SELECT * FROM vwflightschedules WHERE flightNo = ? AND flightDate > ?";
 	private static final String GET_FLIGHT_FARE_BY_SECTOR = "SELECT * FROM flightdetails WHERE sectorid = ?";
+	private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo FROM reservedflights WHERE FlightNo = ? AND FlightDate = ?";
 	
 	public List<FlightSchedule> getAllFlightSchedule() {
 
@@ -232,12 +233,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	
 	
 	
-	public List<Passenger> getAllPassengersByFlight(FlightId id) {
-		
-		
-		
-		return null;
-	}
+
 
 	
 	public List<FlightDetails> getAllFlightDetailsByFlightNoAndDate(String flightNum, Date date) {
@@ -370,6 +366,44 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 
 		return flightDetailsListBySector;
 
+	}
+
+
+
+
+
+	@Override
+	public List<String> getAllOccupiedSeatsByFlight(FlightId flightId) {
+
+		
+		PreparedStatement ps = null;
+		List<String> occupiedSeats = new ArrayList<String>();
+		try {
+			ps = DatabaseConnector.getConnection().prepareStatement(
+					GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID);
+			ps.setString(1, flightId.getFlightNo());
+			ps.setDate(2, new java.sql.Date(flightId.getFlightDate().getTime()));
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				occupiedSeats.add(rs.getString(1));
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			if (ps != null) {
+
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return occupiedSeats;
 	}
 
 

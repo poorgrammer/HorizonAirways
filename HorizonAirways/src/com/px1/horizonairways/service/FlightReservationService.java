@@ -42,4 +42,8 @@ public class FlightReservationService {
 	public FlightDetails getFlightDetailsById(FlightId id){
 		return da.getFlightDetails(id);
 	}
+	
+	public List<String> getAllOccupiedSeatsByFlight(FlightId flightId){
+		return da.getAllOccupiedSeatsByFlight(flightId);
+	}
 }
