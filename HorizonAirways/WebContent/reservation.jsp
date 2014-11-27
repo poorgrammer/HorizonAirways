@@ -17,7 +17,28 @@
 
     <br/>
     <h1>Horizon Airways</h1>
-    
+    <div>
+			<c:choose>
+				<c:when test="${ empty sessionScope.user}">
+					<form action="./login" method="post">
+						<table>
+							<tr>
+								<td>User Name</td>
+								<td><input type="text" name="userName" /></td>
+								<td>Password</td>
+								<td><input type="password" name="password" /></td>
+								<td><input type="submit" name="submit" value="Log in" /></td>
+							</tr>
+						</table>
+					</form>
+				</c:when>
+				<c:otherwise>
+					<form>
+						<input type="submit" name="logout" value="Log out" align="right"/>
+					</form>
+				</c:otherwise>
+			</c:choose>
+			</div>
     <hr/>
     
 

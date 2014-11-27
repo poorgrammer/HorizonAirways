@@ -76,7 +76,9 @@ else {
 
 System.out.println(((FlightDetails)session.getAttribute("firstFlight")).getFlightNo() + " " + ((FlightDetails)session.getAttribute("firstFlight")).getFlightDate());
 System.out.println(((FlightDetails)session.getAttribute("secondFlight")).getFlightNo());
-
+if(request.getParameter("logout")!=null) {
+	request.getSession().invalidate();
+}
 request.getRequestDispatcher("./passengerdetails.jsp").forward(request, response);
 		
 	}
