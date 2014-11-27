@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<<<<<<< HEAD
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-=======
->>>>>>> refs/remotes/origin/master
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,7 +12,7 @@
 </head>
 <body>
 
-
+<c:out value="${firstFlight.flightDate }"></c:out>
 	<fieldset>
 
 		<legend>Personal Details Form</legend>
@@ -58,11 +55,9 @@
 			<input type="submit" value="Submit"/>
 		</div>
 
-<<<<<<< HEAD
-=======
+
 	</fieldset>
 	<br />
->>>>>>> refs/remotes/origin/master
 
 </body>
 </html>
