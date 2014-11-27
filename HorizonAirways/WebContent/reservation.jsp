@@ -21,11 +21,11 @@
     <hr/>
     
 
-	
+	<form action="./flightdetails" method="post">
     <table>
       <tr>
         <td width="250">
-        <form>
+      
              <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> One-Way
                 <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/> Round Trip
             
@@ -40,7 +40,6 @@
             <br/><br/>
             <input type="submit" name="submit" value="Search" align="right"/>
     
-        </form>
     	</td>
         
         <td>
@@ -61,6 +60,7 @@
              </tr>
              
              <c:forEach items="${flightDetailsList}" var="flightDetails">
+               <
              <tr>
                <td>${flightDetails.flightNo}</td>
                <td>${flightDetails.sectorId}</td>
@@ -71,6 +71,7 @@
                <td>${flightDetails.firstClassSeatsAvailable}</td>
                <td>${flightDetails.businessClassSeatsAvailable}</td>
                <td>${flightDetails.economyClassSeatsAvailable}</td>
+               <td><input type="radio" name="firstFlight" checked  value="${flightDetails.flightDate}"/></td> 
              </tr>
              </c:forEach>
            </table> 
@@ -81,7 +82,7 @@
         <table>
       <tr>
         <td width="250">
-        <form action="#">
+      
           
             <br/>
             <b>Flight Date:</b>
@@ -94,7 +95,7 @@
             <br/><br/>
             <input type="submit" name="submit" value="Search" align="right"/>
     
-        </form>
+      
     	</td>
         
         <td>
@@ -125,6 +126,7 @@
                <td>${flightDetailsRoundtrip.firstClassSeatsAvailable}</td>
                <td>${flightDetailsRoundtrip.businessClassSeatsAvailable}</td>
                <td>${flightDetailsRoundtrip.economyClassSeatsAvailable}</td>
+                 <td><input type="radio" name="secondFlight"  checked value="${flightDetailsRoundtrip.flightDate}"/></td> 
              </tr>
              </c:forEach>
            </table> 
@@ -136,7 +138,8 @@
     
     
 
-<a href="./passengerdetails.jsp">Reserve the flight.</a>
+<input type="submit" value="Reserve the flight!"></input>
+</form>
 </font>
 <script src="js/reservation.js"></script>
 </body>

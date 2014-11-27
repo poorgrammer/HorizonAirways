@@ -14,8 +14,8 @@
 
 	<fieldset>
 
-		
-
+		<c:out value="${firstflight.flightNo }"></c:out>
+		<c:out value="${secondFlight.flightNo }"></c:out>
 		<div>
 			<label for="firstName">First Name: </label>
 			<input type="text"  name="firstName" id="firstName">

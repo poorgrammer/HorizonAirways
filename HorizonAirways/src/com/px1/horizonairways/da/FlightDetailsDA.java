@@ -12,7 +12,7 @@ import com.px1.horizonairways.entity.FlightSchedule;
 public interface FlightDetailsDA {
 	
 	public List<FlightDetails> getAllFlightDetails();
-	public List<FlightDetails> getFlightDetails(FlightId id);
+	public FlightDetails getFlightDetails(FlightId id);
 	public List<FlightSchedule> getAllFlightSchedule();
 	public List<FlightDetails> getAllFlightDetailsByFlightNoAndDate(String flightNo, Date flightDate);
 	public Map<String,BigDecimal> getFlightFareBySector(String sectorId);
