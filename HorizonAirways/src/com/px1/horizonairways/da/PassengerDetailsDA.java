@@ -11,4 +11,5 @@ public interface PassengerDetailsDA {
 	public int savePassenger(Passenger p);
 	public String getPassengerPNR(Passenger p);
 	public int cancelPassengerReservation(String pnr);
+	public Passenger getPassengerDetailsByPNR(String pnr);
 }

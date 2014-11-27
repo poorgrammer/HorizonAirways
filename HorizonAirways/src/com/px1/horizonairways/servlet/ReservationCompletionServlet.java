@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.px1.horizonairways.daimpl.ReservationDA;
 import com.px1.horizonairways.entity.FlightDetails;
 import com.px1.horizonairways.entity.Passenger;
+import com.px1.horizonairways.entity.ReservedFlight;
 import com.px1.horizonairways.service.FlightReservationService;
 
 /**
@@ -35,17 +36,24 @@ public class ReservationCompletionServlet extends HttpServlet {
 		FlightReservationService service = new FlightReservationService();
 		service.setDa(new ReservationDA());
 		HttpSession session = request.getSession();
+		
 		Passenger passenger = (Passenger)session.getAttribute("passenger");
 		FlightDetails firstFlight = (FlightDetails) session.getAttribute("firstFlight");
 		service.insertPassengerDetails(passenger);
+		String seatNo = (String)session.getAttribute("seatNo");
+		String seatClass = (String)session.getAttribute("seatClass");
+		String mealPreference = (String)session.getAttribute("mealPreference");
+		String SSR = (String)session.getAttribute("SSR");
+		
 		String pnr = service.getPassengerPNR(passenger);
 		passenger.setPnr(pnr);
-		
-		int result = service.saveReservationDetails(passenger, firstFlight);
+		ReservedFlight reservedFlight = new ReservedFlight(passenger.getPnr(), firstFlight.getFlightNo(), firstFlight.getFlightDate(), seatNo, seatClass, mealPreference, SSR);
+		int result = service.saveReservationDetails(reservedFlight);
 		
 		if(session.getAttribute("secondFlight")!=null){
 			FlightDetails secondFlight = (FlightDetails) session.getAttribute("secondFlight");
-			service.saveReservationDetails(passenger, secondFlight);
+			 reservedFlight = new ReservedFlight(passenger.getPnr(), secondFlight.getFlightNo(), secondFlight.getFlightDate(), seatNo, seatClass, mealPreference, SSR);
+			service.saveReservationDetails(reservedFlight);
 		}
 		
 		request.setAttribute("result", result);

@@ -10,6 +10,7 @@ import com.px1.horizonairways.entity.FlightDetails;
 import com.px1.horizonairways.entity.FlightId;
 import com.px1.horizonairways.entity.FlightSchedule;
 import com.px1.horizonairways.entity.Passenger;
+import com.px1.horizonairways.entity.ReservedFlight;
 
 public class FlightReservationService {
 
@@ -48,8 +49,8 @@ public class FlightReservationService {
 		return da.savePassenger(passenger);
 	}
 	
-	public int saveReservationDetails(Passenger passenger, FlightDetails flightDetails){
-		return da.saveFlightReservation(passenger, flightDetails);
+	public int saveReservationDetails(ReservedFlight reservedFlight){
+		return da.saveFlightReservation(reservedFlight);
 		
 	}
 	
@@ -59,5 +60,9 @@ public class FlightReservationService {
 	
 	public int cancelReservation(String pnr){
 		return da.cancelPassengerReservation(pnr);
+	}
+	
+	public Passenger gerPassengerDetailsByPNR(String pnr){
+		return da.getPassengerDetailsByPNR(pnr);
 	}
 }
