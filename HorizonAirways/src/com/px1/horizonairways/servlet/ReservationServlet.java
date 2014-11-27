@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.px1.horizonairways.daimpl.ReservationDA;
 import com.px1.horizonairways.entity.FlightDetails;
+import com.px1.horizonairways.entity.User;
 import com.px1.horizonairways.service.FlightReservationService;
 
 /**
@@ -81,6 +82,8 @@ public class ReservationServlet extends HttpServlet {
 		request.setAttribute("flightFareMap", flightFareMap);
 		request.setAttribute("sectorId", sectorId);
 		request.getSession().setAttribute("months", months);
+		if(request.getParameter("logout")!=null) {
+		}
 		request.getRequestDispatcher("reservation.jsp").forward(request, response);
 	}
 
