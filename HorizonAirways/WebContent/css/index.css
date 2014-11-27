@@ -1,48 +1,30 @@
 @CHARSET "ISO-8859-1";
-table{
-	font-size:1em;
-	
+
+.header {
+	background:-o-linear-gradient(bottom, #ff5656 5%, #7f0000 100%);	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff5656), color-stop(1, #7f0000) );	
+	background:-moz-linear-gradient( center top, #ff5656 5%, #7f0000 100% );	
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff5656", endColorstr="#7f0000");	
+	background: -o-linear-gradient(top,#ff5656,7f0000);
+	background-color:#ff5656;
+	width: 100%;
 }
 
-
-
-
-td{
-
-	padding:5px;
-	text-align:center;
-}
-
-
-
-a{
-	text-decoration:none;
-	
-}
-
-a:hover{
-	color:#003300;
-	weight:bold;
-	text-decoration:underline;
-	
-}
-
-.login > div:first-child {
-	font-size: large;
+.header > div:first-child {
+	margin-left: 10px;
+	font-size: 30px;
 	font-weight: bold;
 	display: inline-flex;
 	justify-content: flex-start;
-	width: 49%;
+	width: 48%;
 }
 
-.login > div:last-child {
+.header > div:last-child {
 	display: inline-flex;
 	justify-content: flex-end;
 	width: 50%;
 }
 
-.flightDetails{
-	vertical-align: middle;
-	margin-left: auto;
-    margin-right: auto;
+.header p {
+	color: #FFFFFF;
 }
