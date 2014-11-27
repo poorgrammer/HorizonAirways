@@ -24,7 +24,7 @@ import com.px1.horizonairways.entity.ReservedFlight;
 public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		ReserveFlightsDA {
 
-	private static final String GET_ALL_FLIGHT_SCHEDULE = "SELECT * FROM flightdetailsindays";
+	private static final String GET_ALL_FLIGHT_SCHEDULE = "SELECT DISTINCT * FROM flightdetailsindays";
 	private static final String GET_ALL_FLIGHT_DETAILS = "SELECT * FROM flightschedules ";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_SECTOR = "SELECT * FROM vwflightschedules WHERE sectorid = ? AND FlightDate > ?";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTID = "SELECT * FROM flightdetails WHERE FlightNo = ? AND FlightDate = ?";

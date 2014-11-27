@@ -35,7 +35,9 @@
 					</form>
 				</c:when>
 				<c:otherwise>
-					<input type="submit" name="submit" value="Log out" align="right"/>
+					<form>
+						<input type="submit" name="logout" value="Log out" align="right"/>
+					</form>
 				</c:otherwise>
 			</c:choose>
 			</div>
