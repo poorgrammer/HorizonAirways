@@ -23,7 +23,7 @@
 	<form action="./flightdetails" method="post">
     <table>
       <tr>
-        <td width="250" class="filterArea">
+        <td width="300" class="filterArea">
         	<br/>
             <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> One-Way
             <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/> Round Trip
@@ -78,15 +78,13 @@
         </td>
       </tr>
     </table>
+    
     <div id="roundtrip">
-        <table>
+    <hr />
+      <table>
       <tr>
-        <td width="250" class="filterArea">
+        <td width="300" class="filterArea">
         	<br/>
-            <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> One-Way
-            <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/> Round Trip
-            
-            <br/><br/>
             <b>Flight Date:</b>
             <br/>
             
