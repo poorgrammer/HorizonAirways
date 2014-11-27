@@ -34,6 +34,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	private static final String SAVE_PASSENGER_DETAILS = "INSERT INTO passenger VALUES(?,?,?,?,?,?,?,?)";
 	private static final String GET_PASSENGER_PNR = "SELECT pnrno FROM passenger WHERE firstname = ? AND lastname = ? and birthdate = ? AND reservationdate = ?";
 	private static final String SAVE_FLIGHT_RESERVATION = "INSERT INTO reservedflights VALUES(?,?,?,?,?,?,?)";
+	private static final String CANCEL_REGISTRATION = "UPDATE passenger SET cancelflag=1 WHERE pnr = ?";
 	
 	public List<FlightSchedule> getAllFlightSchedule() {
 
@@ -465,6 +466,34 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		}
 		
 		return rows;
+	}
+
+
+	@Override
+	public int cancelPassengerReservation(String pnr) {
+
+		int rows = 0;
+		PreparedStatement ps = null;
+		try {
+			ps = DatabaseConnector.getConnection().prepareStatement(CANCEL_REGISTRATION);
+			rows = ps.executeUpdate();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally{
+			if(ps!=null){
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+			}
+			
+		}
+		
+		return rows;
+		
 	}
 
 

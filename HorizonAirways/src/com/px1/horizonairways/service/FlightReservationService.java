@@ -56,4 +56,8 @@ public class FlightReservationService {
 	public String getPassengerPNR(Passenger passenger){
 		return da.getPassengerPNR(passenger);
 	}
+	
+	public int cancelReservation(String pnr){
+		return da.cancelPassengerReservation(pnr);
+	}
 }

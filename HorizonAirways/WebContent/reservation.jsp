@@ -175,7 +175,7 @@
     
     
 
-<input type="submit" value="Reserve the flight!"></input>
+<input type="submit" value="Reserve the flight!" class="reserveButton"></input>
 </form>
 </font>
 <script src="js/reservation.js"></script>
