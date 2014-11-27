@@ -89,6 +89,7 @@ public class ReservationServlet extends HttpServlet {
 	
 		request.getSession().setAttribute("months", months);
 		if(request.getParameter("logout")!=null) {
+			request.getSession().invalidate();
 		}
 		request.getRequestDispatcher("reservation.jsp").forward(request, response);
 	}
