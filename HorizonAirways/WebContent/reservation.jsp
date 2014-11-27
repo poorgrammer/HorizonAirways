@@ -60,7 +60,7 @@
              </tr>
              
              <c:forEach items="${flightDetailsList}" var="flightDetails">
-               <
+               
              <tr>
                <td>${flightDetails.flightNo}</td>
                <td>${flightDetails.sectorId}</td>
