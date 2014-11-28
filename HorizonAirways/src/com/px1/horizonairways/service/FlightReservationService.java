@@ -10,6 +10,7 @@ import com.px1.horizonairways.entity.FlightDetails;
 import com.px1.horizonairways.entity.FlightId;
 import com.px1.horizonairways.entity.FlightSchedule;
 import com.px1.horizonairways.entity.Passenger;
+import com.px1.horizonairways.entity.PassengerSeatPlan;
 import com.px1.horizonairways.entity.ReservedFlight;
 
 public class FlightReservationService {
@@ -73,6 +74,15 @@ public class FlightReservationService {
 	public Passenger getPassengerDetailsByPNR(String pnr){
 		return da.getPassengerDetailsByPNR(pnr);
 
+	}
+	
+	public List<ReservedFlight> getAllReservedFlights(String pnr){
+		return da.getReservedFlights(pnr);
+	}
+	
+	public PassengerSeatPlan getPassengerSeatPlanByFlightId(FlightId flightId){
+		PassengerSeatPlan seatPlan =  new PassengerSeatPlan(flightId,da);
+		return seatPlan;
 	}
 	
 }
