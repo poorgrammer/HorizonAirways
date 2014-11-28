@@ -41,7 +41,7 @@ $(document).ready(function(){
 		</div>
 	</div>
 
-	<form action="./PassengerDerails" method="post">
+	<form action="./PassengerDetails" method="post">
 	<div>
 		<h3>Personal Details Form</h3>
 		<div>
@@ -81,7 +81,7 @@ $(document).ready(function(){
 		</div>
 		<div>
 			<label for="SSR">SSR: </label>
-			<input type="text" name="SSR" id="SSR" required placeholder="Put NA if not applicable">
+			<input type="text" name="SSR" id="SSR" >
 		</div>
 		<div><h2>Flight Reservation Preferences</h2></div>
 		<div>
@@ -110,9 +110,7 @@ $(document).ready(function(){
 			}
 		%>
 		
-		<div class="button">
-			<input type="submit" value="Submit"/>
-		</div>
+		<input type="submit" value="Submit" class="submit"/>
 	</div>
 	</form>
 	
