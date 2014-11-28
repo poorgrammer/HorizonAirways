@@ -10,7 +10,7 @@
 <body>
 
 <h3>You have successfully scheduled your flight.</h3>
-<h2>Your PNR Number is <c:out value="${passenger.PNR}"></c:out>. Please keep a copy of your PNR number for future reference. Thank you!</h2>
+<h2>Your PNR Number is <c:out value="${passenger.pnr}"></c:out>. Please keep a copy of your PNR number for future reference. Thank you!</h2>
 <div><a href="./index.jsp">Back to home page.</a></div>
 
 </body>

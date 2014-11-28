@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.px1.horizonairways.daimpl.ReservationDA;
 import com.px1.horizonairways.entity.FlightDetails;
 import com.px1.horizonairways.entity.FlightId;
+import com.px1.horizonairways.entity.PassengerSeatPlan;
 import com.px1.horizonairways.service.FlightReservationService;
 
 /**
@@ -27,7 +29,7 @@ public class FlightReservationDetailsServlet extends HttpServlet {
      */
     public FlightReservationDetailsServlet() {
         super();
-        // TODO Auto-generated constructor stub
+  
     }
 
 	/**
@@ -41,41 +43,60 @@ public class FlightReservationDetailsServlet extends HttpServlet {
 		service.setDa(da);
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-	
-		
-		
-if(request.getParameter("trip").equals("roundtrip")){
+
 	
 			try {
-				Date date = format.parse(request.getParameter("firstFlight"));
-				FlightId id = new FlightId(session.getAttribute("firstFlightNo").toString(),date);
-			session.setAttribute("firstFlight", service.getFlightDetailsById(id));	
-			
-			date =format.parse(request.getParameter("secondFlight"));
-			id = new FlightId(session.getAttribute("secondFlightNo").toString(),date);
-			session.setAttribute("secondFlight", service.getFlightDetailsById(id));	
-			
-			
+					Date date = format.parse(request.getParameter("firstFlight"));
+					FlightId id = new FlightId(session.getAttribute("firstFlightNo").toString(),date);
+					session.setAttribute("firstFlight", service.getFlightDetailsById(id));	
 				
+				
+				PassengerSeatPlan firstPassengerSeatPlan = service.getPassengerSeatPlanByFlightId(id);
+				request.setAttribute("firstPassengerSeatPlan",firstPassengerSeatPlan);
+				request.setAttribute("flightId1", id);
+				
+				if(request.getParameter("trip").equals("roundtrip")){
+				
+					date =format.parse(request.getParameter("secondFlight"));
+					id = new FlightId(session.getAttribute("secondFlightNo").toString(),date);
+					session.setAttribute("secondFlight", service.getFlightDetailsById(id));	
+					
+					PassengerSeatPlan secondPassengerSeatPlan = service.getPassengerSeatPlanByFlightId(id);
+					request.setAttribute("secondPassengerSeatPlan",secondPassengerSeatPlan);
+					request.setAttribute("flightId2", id);
+				}else{
+					session.setAttribute("secondFlight", null);
+					request.setAttribute("secondPassengerSeatPlan",null);
+					request.setAttribute("flightId2", null);
+				}
 				
 			} catch (ParseException e) {
-				
-				
 				e.printStackTrace();
 			}
-	}
-
-else {
 	
-	try {
-		session.setAttribute("firstFlight", service.getFlightDetailsById(new FlightId(session.getAttribute("firstFlightNo").toString(),format.parse(request.getParameter("firstFlight")))));
-	session.setAttribute("secondFlight", null);
-	
-	} catch (ParseException e) {
 
-		e.printStackTrace();
-	}	
-}
+//else {
+//	
+//	try {
+//		Date date = format.parse(request.getParameter("firstFlight"));
+//		FlightId id = new FlightId(session.getAttribute("firstFlightNo").toString(),date);
+//		session.setAttribute("firstFlight", service.getFlightDetailsById(id));
+//	session.setAttribute("secondFlight", null);
+//	PassengerSeatPlan firstPassengerSeatPlan = service.getPassengerSeatPlanByFlightId(id);
+//	request.setAttribute("firstPassengerSeatPlan",firstPassengerSeatPlan);
+//	
+//	
+//	
+//	} catch (ParseException e) {
+//
+//		e.printStackTrace();
+//	}	
+//}
+
+
+
+
+
 
 
 if(request.getParameter("logout")!=null) {

@@ -25,7 +25,7 @@ public class ReservationCompletionServlet extends HttpServlet {
      */
     public ReservationCompletionServlet() {
         super();
-        // TODO Auto-generated constructor stub
+ 
     }
 
 	/**
@@ -47,14 +47,14 @@ public class ReservationCompletionServlet extends HttpServlet {
 		
 		String pnr = service.getPassengerPNR(passenger);
 		passenger.setPnr(pnr);
-		ReservedFlight reservedFlight = new ReservedFlight(passenger.getPnr(), firstFlight.getFlightNo(), firstFlight.getFlightDate(), firstSeatNo, firstSeatClass, mealPreference, SSR);
+		ReservedFlight reservedFlight = new ReservedFlight(passenger.getPnr(), firstFlight.getFlightNo(), firstFlight.getFlightDate(), firstSeatNo.toUpperCase(), firstSeatClass, mealPreference, SSR);
 		int result = service.saveReservationDetails(reservedFlight);
 		
 		if(session.getAttribute("secondFlight")!=null){
 			String secondSeatNo = request.getParameter("secondSeatNo");
 			String secondSeatClass = request.getParameter("secondSeatClass");
 			FlightDetails secondFlight = (FlightDetails) session.getAttribute("secondFlight");
-			 reservedFlight = new ReservedFlight(passenger.getPnr(), secondFlight.getFlightNo(), secondFlight.getFlightDate(), secondSeatNo, secondSeatClass, mealPreference, SSR);
+			 reservedFlight = new ReservedFlight(passenger.getPnr(), secondFlight.getFlightNo(), secondFlight.getFlightDate(), secondSeatNo.toUpperCase(), secondSeatClass, mealPreference, SSR);
 			service.saveReservationDetails(reservedFlight);
 		}
 		

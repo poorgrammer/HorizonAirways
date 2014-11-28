@@ -9,6 +9,77 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/passenger.css">
 <title>Passenger Details</title>
+
+
+<style>
+table{
+	border-collapse: collapse;
+}
+table,tr,td{
+border: solid 1px black ;
+}
+td{
+
+	min-height:10px;
+	min-width:10px;
+	padding: 2px; 
+}
+.seat{
+	cursor:pointer;
+}
+.occupied.seat{
+	background-color: #dd0000;
+}
+
+.selected{
+	background-color: #00ff00 !important;
+}
+.available.seat{
+	background-color: #dddddd;
+}
+
+div.area{
+	width: 100%;
+	display: flex;
+	justify-content:center;
+}
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	
+	$( ".available.seat").click(function(){
+		
+		if($(this).parents(".${requestScope.flightId1}").length){
+			$("#firstSeatNo").val($(this).children("div.seatNo").text());
+			$("#firstSeatClass").val($(this).children("div.seatClass").text());
+			$(".${requestScope.flightId1} .selected.seat").removeClass("selected");
+			$(this).addClass("selected");
+		}if($(this).parents(".${requestScope.flightId2}").length){
+			$("#secondSeatNo").val($(this).children("div.seatNo").text());
+			$("#secondSeatClass").val($(this).children("div.seatClass").text());
+			$(".${requestScope.flightId2} .selected.seat").removeClass("selected");
+			$(this).addClass("selected");
+		}
+
+	});
+
+});
+</script>
+
+<!--  END OF GAWA NI NINO -------------------->
+<!--  END OF GAWA NI NINO -------------------->
+<!--  END OF GAWA NI NINO -------------------->
+<!--  END OF GAWA NI NINO -------------------->
+<!--  END OF GAWA NI NINO -------------------->
+<!--  END OF GAWA NI NINO -------------------->
+<!--  END OF GAWA NI NINO -------------------->
+<!--  END OF GAWA NI NINO -------------------->
+<!--  END OF GAWA NI NINO -------------------->
+
+
 </head>
 <body>
 
@@ -74,12 +145,12 @@
 		
 		<div>
 			<label for="firstSeatNo">Seat No: </label>
-			<input type="text" name="firstSeatNo" id="firstSeatNo" required>
+			<input type="text" name="firstSeatNo" id="firstSeatNo" class="${requestScope.flightId1}" required>
 		</div>
 		
 		<div>
 			<label for="firstSeatClass">Seat Class: </label>
-			<input type="text" name="firstSeatClass" id="firstSeatClass" required>
+			<input type="text" name="firstSeatClass" id="firstSeatClass" class="${requestScope.flightId1}" required>
 		</div>
 		
 	
@@ -92,12 +163,12 @@
 		
 		<div>
 			<label for="secondSeatNo">Seat No: </label>
-			<input type="text" name="secondSeatNo" id="secondSeatNo" required>
+			<input type="text" name="secondSeatNo" id="secondSeatNo" class="${requestScope.flightId2}" required>
 		</div>
 		
 		<div>
 			<label for="secondSeatClass">Seat Class: </label>
-			<input type="text" name="secondSeatClass" id="secondSeatClass" required>
+			<input type="text" name="secondSeatClass" id="secondSeatClass" class="${requestScope.flightId2}" required>
 		</div>
 		
 				
@@ -114,6 +185,49 @@
 	</fieldset>
 	</form>
 
-	
+
+
+<c:set var="firstSeatPlan" value="${requestScope.firstPassengerSeatPlan}" />
+
+<div>
+
+<div class="area">
+
+${firstSeatPlan.firstClassHTML}
+
+
+
+</div>
+<div class="area">
+${firstSeatPlan.businessClassHTML}
+</div>
+<div class="area">
+${firstSeatPlan.economyClassHTML}
+</div>
+<input type="hidden" name="seatNo" id="seatNo" />
+<input type="hidden" name="seatClass" id="seatClass" />
+</div>
+<br/>
+<br/>
+<hr/>
+<br/>
+<br/>
+<c:if test="${not empty requestScope.secondPassengerSeatPlan}">
+	<c:set var="secondSeatPlan" value="${requestScope.secondPassengerSeatPlan}" />
+	<div>
+		<div class="area">
+		${secondSeatPlan.firstClassHTML}
+		</div>
+		<div class="area">
+		${secondSeatPlan.businessClassHTML}
+		</div>
+		<div class="area">
+		${secondSeatPlan.economyClassHTML}
+		</div>
+		<input type="hidden" name="seatNo" id="seatNo" />
+		<input type="hidden" name="seatClass" id="seatClass" />
+	</div>
+</c:if>
+
 </body>
 </html>

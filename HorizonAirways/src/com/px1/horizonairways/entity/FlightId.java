@@ -1,5 +1,6 @@
 package com.px1.horizonairways.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class FlightId {
@@ -30,6 +31,13 @@ public class FlightId {
 
 	public void setFlightDate(Date flightDate) {
 		this.flightDate = flightDate;
+	}
+	
+	
+	@Override
+	public String toString() {
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		return this.flightNo + df.format(this.flightDate);
 	}
 	
 	

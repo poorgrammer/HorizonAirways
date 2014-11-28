@@ -14,9 +14,9 @@ private AircraftLayout layout;
 private FlightId flightId;
 private FlightReservationService frs;
 private FlightService fs;
-private static final String FIRSTCLASS="first";
-private static final String BUSINESSCLASS="business";
-private static final String ECONOMYCLASS="economy";
+private static final String FIRSTCLASS="First";
+private static final String BUSINESSCLASS="Business";
+private static final String ECONOMYCLASS="Economy";
 private String firstClassHTML;
 private String businessClassHTML;
 private String economyClassHTML;
@@ -91,7 +91,7 @@ private String html;
 			fcSumPerRow+=arrangement[i];
 		}
 		
-		stringHTML.append("<table class='passengerClassArea "+areaClass+"'>");
+		stringHTML.append("<table class='passengerClassArea "+areaClass+" "+flightId.toString()+"'>");
 		for(int fcRows=1; fcRows <= numOfRows;fcRows++){
 			stringHTML.append("<tr>");
 			char start='A';

@@ -452,13 +452,13 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 		PreparedStatement ps = null;
 		try {
 			ps = DatabaseConnector.getConnection().prepareStatement(SAVE_FLIGHT_RESERVATION);
-			ps.setString(1, reservedFlight.getPNRNo());
-			ps.setString(2, reservedFlight.getFlightNo());
+			ps.setString(1, reservedFlight.getPNRNo().trim());
+			ps.setString(2, reservedFlight.getFlightNo().trim());
 			ps.setDate(3, new java.sql.Date(reservedFlight.getFlightDate().getTime()));
-			ps.setString(4, reservedFlight.getSeatNo());
-			ps.setString(5, reservedFlight.getSeatClass());
-			ps.setString(6, reservedFlight.getMealPreference());
-			ps.setString(7, reservedFlight.getSSR());
+			ps.setString(4, reservedFlight.getSeatNo().trim());
+			ps.setString(5, reservedFlight.getSeatClass().trim());
+			ps.setString(6, reservedFlight.getMealPreference().trim());
+			ps.setString(7, reservedFlight.getSSR().trim());
 			rows = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
