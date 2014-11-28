@@ -13,7 +13,7 @@
 <body>
 
 <form action="./passengerdetails" method="post">
-
+<div>
 	<fieldset>
 
 		<legend>Personal Details Form</legend>
@@ -59,7 +59,7 @@
 
 	</fieldset>
 	</form>
-
+	</div>
 
 </body>
 </html>

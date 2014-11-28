@@ -45,6 +45,10 @@ public class FlightReservationService {
 		return da.getFlightDetails(id);
 	}
 	
+
+	public List<String> getAllOccupiedSeatsByFlight(FlightId flightId){
+		return da.getAllOccupiedSeatsByFlight(flightId);
+	}
 	public int insertPassengerDetails(Passenger passenger){
 		return da.savePassenger(passenger);
 	}
@@ -64,5 +68,6 @@ public class FlightReservationService {
 	
 	public Passenger getPassengerDetailsByPNR(String pnr){
 		return da.getPassengerDetailsByPNR(pnr);
+
 	}
 }
