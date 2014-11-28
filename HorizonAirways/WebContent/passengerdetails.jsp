@@ -7,18 +7,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/passenger.css">
-<link rel="stylesheet" href="css/headerDesign.css">
+<link rel="stylesheet" href="css/header.css">
 <title>Passenger Details</title>
 </head>
 
 <body>
 <font face="Arial, Helvetica, sans-serif" size="-1">
 	<div class="header">
-		<img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/>
+		<div>
+			<img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/>
+		</div>
+		<div>
+			<form>
+				<input type="submit" name="logout" value="Log out" align="right"/>
+			</form>
+		</div>
 	</div>
 	
 	<br/>
-	<fieldset>
+	<!-- <fieldset>
 		<legend>Personal Details Form</legend>
 
 		<div>
@@ -56,7 +63,7 @@
 		<div class="button">
 			<input type="submit" value="Submit"/>
 		</div>
-	</fieldset> 
+	</fieldset>  -->
 </font>
 </body>
 </html>

@@ -9,7 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="stylesheet" href="css/reservation.css"/>
-<link rel="stylesheet" href="css/headerWithLogin.css">
+<link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/tableDesign.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Make Reservation</title>
@@ -38,7 +38,7 @@
 					<c:otherwise>
 						<div>
 							<form>
-								<input type="submit" name="logout" value="Log out" align="right"/>
+								<input type="submit" name="logout" value="Log out"/>
 							</form>
 						</div>
 					</c:otherwise>
@@ -70,7 +70,7 @@
     	</td>
         
         <td>
-        	<h2>Departure</h2>
+        	<h3>Departure</h3>
         	<table class="flightDetails">
 	             <tr>
 	               <th rowspan="2" scope="col">Flight No.</th>
@@ -124,7 +124,7 @@
     	</td>
         
         <td>
-        	<h2>Return</h2>
+        	<h3>Return</h3>
         	<table class="flightDetails">
              <tr>
                <th rowspan="2" scope="col">Flight No.</th>

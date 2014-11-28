@@ -11,7 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/index.css">
-<link rel="stylesheet" href="css/headerWithLogin.css">
+<link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/tableDesign.css">
 <title>Horizon Airways</title>
 </head>
@@ -40,7 +40,7 @@
 					<c:otherwise>
 						<div>
 							<form>
-								<input type="submit" name="logout" value="Log out" align="right"/>
+								<input type="submit" name="logout" value="Log out"/>
 							</form>
 						</div>
 					</c:otherwise>

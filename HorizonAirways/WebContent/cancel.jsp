@@ -6,7 +6,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="css/cancel.css">
-<link rel="stylesheet" href="css/headerDesign.css">
+<link rel="stylesheet" href="css/header.css">
 <title>Horizon Airways</title>
 </head>
 <body>
