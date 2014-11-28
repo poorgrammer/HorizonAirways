@@ -13,17 +13,29 @@ table,tr,td{
 border: solid 1px black ;
 }
 td{
-	min-height:20px;
-	min-width:20px;
-	padding: 5px; 
+
+	min-height:10px;
+	min-width:10px;
+	padding: 2px; 
+}
+.seat{
+	cursor:pointer;
+}
+.occupied.seat{
+	background-color: #dd0000;
 }
 
-.occupiedSeat{
-	background-color: red;
+.selected{
+	background-color: #00ff00 !important;
+}
+.available.seat{
+	background-color: #dddddd;
 }
 
-.availableSeat{
-	background-color: green;
+div.area{
+	width: 100%;
+	display: flex;
+	justify-content:center;
 }
 </style>
 
@@ -31,18 +43,30 @@ td{
 <script>
 $(document).ready(function(){
 
-	$(".availableSeat").click(function(){
-	alert($(this).text());
-		$("#seatNo").val($(this).text());
+	$(".available.seat").click(function(){
+		$(".selected.seat").removeClass("selected");
+		$(this).addClass("selected");
+		$("#seatNo").val($(this).children("div.seatNo").text());
+		$("#seatClass").val($(this).children("div.seatClass").text());
 	});
 
 });
 </script>
 
+
 <div>
+
+
+<div class="area">
+
 ${requestScope.firstClassZone}
+</div>
+<div class="area">
 ${requestScope.businessClassZone}
+</div>
+<div class="area">
 ${requestScope.economyClassZone}
+</div>
 <input type="hidden" name="seatNo" id="seatNo" />
 <input type="hidden" name="seatClass" id="seatClass" />
 </div>

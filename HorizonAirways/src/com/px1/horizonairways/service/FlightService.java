@@ -24,5 +24,6 @@ public class FlightService {
 		return da.getLayoutByFlightNo(flightNo);
 	}
 	
+	
 
 }

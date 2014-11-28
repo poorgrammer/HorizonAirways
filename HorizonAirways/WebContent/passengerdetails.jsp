@@ -12,8 +12,17 @@
 </head>
 <body>
 
+
 <form action="./PassengerDetails" method="post">
 <div>
+	<fieldset>
+
+
+	<div class="header">
+		<img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/>
+	</div>
+
+
 	<fieldset>
 
 		<legend>Personal Details Form</legend>

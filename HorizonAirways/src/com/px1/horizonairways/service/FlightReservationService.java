@@ -20,6 +20,10 @@ public class FlightReservationService {
 		
 	}
 
+	public FlightReservationService(ReservationDA da){
+		this.da = da;
+	}
+	
 	public void setDa(ReservationDA da) {
 		this.da = da;
 	}
@@ -71,7 +75,9 @@ public class FlightReservationService {
 
 	}
 	
+
 	public List<ReservedFlight> getAllReservedFlights(String pnr){
 		return da.getReservedFlights(pnr);
 	}
+
 }
