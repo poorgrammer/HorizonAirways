@@ -37,7 +37,7 @@ public class PassengerDetailsServlet extends HttpServlet {
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String gender =	request.getParameter("gender");
-		String bday = request.getParameter("date");
+		String bday = request.getParameter("birthDay");
 		Date birthDay = null;
 		try {
 			birthDay = new SimpleDateFormat("yyyy-mm-dd").parse(bday);
@@ -58,6 +58,7 @@ public class PassengerDetailsServlet extends HttpServlet {
 		
 		Passenger passenger = new Passenger(lastName, firstName, birthDay, gender, 0, mobileNo, emailAddress, date);
 		request.getSession().setAttribute("passenger", passenger);
+		request.getRequestDispatcher("/seatpicker").forward(request, response);
 	}
 
 	

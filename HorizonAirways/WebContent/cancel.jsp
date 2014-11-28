@@ -55,6 +55,48 @@
 
 
 	</fieldset>
+	
+		
+	
+	<% if(request.getAttribute("reservedFlights")!=null){ %>
+	
+	
+	<table>
+			<tr>
+				<th rowspan="2" scope="col">Flight No.</th>
+				<th rowspan="2" scope="col">FlightDate</th>
+				<th rowspan="2" scope="col">Seat No</th>
+				<th rowspan="2" scope="col">Class</th>
+				<th rowspan="2" scope="col">Meal</th>
+				<th rowspan="2" scope="col">SSR</th>
+				
+			</tr>
+
+		
+	
+
+			<c:forEach items="${requestScope.reservedFlights}" var="reservedFlight">
+
+				<tr>
+					<td>${reservedFlight.flightNo}</td>
+					<td>${reservedFlight.flightDate }</td>
+					<td>${reservedFlight.seatNo }</td>
+					<td>${reservedFlight.seatClass }</td>
+					<td>${reservedFlight.mealPreference }</td>
+					<td>${reservedFlight.SSR }</td>
+				</tr>
+				
+				
+			</c:forEach>
+		</table>
+		
+		
+		<td><a href="./CancelReservation?flightNo=${reservedFlight.flightNo}&amp;pnrNo=${requestScope.passenger.pnr}"><b>Cancel Flight</b></a></td>
+	<% }
+	
+	
+	%>
+	
 
 </div>
 

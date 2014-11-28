@@ -70,4 +70,8 @@ public class FlightReservationService {
 		return da.getPassengerDetailsByPNR(pnr);
 
 	}
+	
+	public List<ReservedFlight> getAllReservedFlights(String pnr){
+		return da.getReservedFlights(pnr);
+	}
 }

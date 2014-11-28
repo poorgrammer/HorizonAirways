@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="./passengerdetails" method="post">
+<form action="./PassengerDetails" method="post">
 <div>
 	<fieldset>
 
@@ -60,6 +60,9 @@
 	</fieldset>
 	</form>
 	</div>
+	<div>
 
+<jsp:include page="./SeatPicker.jsp" />
+</div>
 </body>
 </html>
