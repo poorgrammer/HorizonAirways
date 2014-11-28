@@ -31,11 +31,13 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	private static final String GET_ALL_RESERVED_FLIGHTS_BY_PNR = "SELECT * FROM reservedflights WHERE pnrno = ?";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO_AND_DATE = "SELECT * FROM vwflightschedules WHERE flightNo = ? AND flightDate > ?";
 	private static final String GET_FLIGHT_FARE_BY_SECTOR = "SELECT * FROM flightdetails WHERE sectorid = ?";
+private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo FROM reservedflights WHERE FlightNo = ? AND FlightDate = ?";
 	private static final String SAVE_PASSENGER_DETAILS = "INSERT INTO passenger VALUES(?,?,?,?,?,?,?,?)";
 	private static final String GET_PASSENGER_PNR = "SELECT pnrno FROM passenger WHERE firstname = ? AND lastname = ? and birthdate = ? AND reservationdate = ?";
 	private static final String SAVE_FLIGHT_RESERVATION = "INSERT INTO reservedflights VALUES(?,?,?,?,?,?,?)";
 	private static final String CANCEL_REGISTRATION = "UPDATE passenger SET cancelflag=1 WHERE pnr = ?";
 	private static final String GET_PASSENGER_BY_PNR = "SELECT * FROM passenger WHERE pnrno = ?";
+
 	public List<FlightSchedule> getAllFlightSchedule() {
 
 		List<FlightSchedule> flightScheduleList = new ArrayList<FlightSchedule>();
@@ -234,12 +236,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	
 	
 	
-	public List<Passenger> getAllPassengersByFlight(FlightId id) {
-		
-		
-		
-		return null;
-	}
+
 
 	
 	public List<FlightDetails> getAllFlightDetailsByFlightNoAndDate(String flightNum, Date date) {
@@ -532,6 +529,51 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		
 		return passenger;
 		
+	}
+
+
+
+
+
+	@Override
+	public List<String> getAllOccupiedSeatsByFlight(FlightId flightId) {
+
+		
+		PreparedStatement ps = null;
+		List<String> occupiedSeats = new ArrayList<String>();
+		try {
+			ps = DatabaseConnector.getConnection().prepareStatement(
+					GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID);
+			ps.setString(1, flightId.getFlightNo());
+			ps.setDate(2, new java.sql.Date(flightId.getFlightDate().getTime()));
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				occupiedSeats.add(rs.getString(1));
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			if (ps != null) {
+
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return occupiedSeats;
+	}
+
+
+	@Override
+	public List<Passenger> getAllPassengersByFlight(FlightId id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

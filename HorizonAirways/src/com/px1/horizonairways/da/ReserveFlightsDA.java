@@ -11,7 +11,9 @@ public interface ReserveFlightsDA {
 	
 	public List<ReservedFlight> getAllReservedFlights();
 	public List<ReservedFlight> getReservedFlights(String pnr);
+	public List<String> getAllOccupiedSeatsByFlight(FlightId flightId);
 	public List<Passenger> getAllPassengersByFlight(FlightId id);
 	public int saveFlightReservation(ReservedFlight reservedFlight);
+
 
 }

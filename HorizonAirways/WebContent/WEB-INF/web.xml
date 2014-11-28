@@ -60,6 +60,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+
+    <display-name>SeatPickerServlet</display-name>
+    <servlet-name>SeatPickerServlet</servlet-name>
+    <servlet-class>com.px1.horizonairways.servlet.SeatPickerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SeatPickerServlet</servlet-name>
+    <url-pattern>/seatpicker</url-pattern>
+ </servlet-mapping>
+<servlet>
     <display-name>ReservationCompletionServlet</display-name>
     <servlet-name>ReservationCompletionServlet</servlet-name>
     <servlet-class>com.px1.horizonairways.servlet.ReservationCompletionServlet</servlet-class>
@@ -77,5 +87,6 @@
   <servlet-mapping>
     <servlet-name>CancelReservationServlet</servlet-name>
     <url-pattern>/CancelReservation</url-pattern>
+
   </servlet-mapping>
 </web-app>
