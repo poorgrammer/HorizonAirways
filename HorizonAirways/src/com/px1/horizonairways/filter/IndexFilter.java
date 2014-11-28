@@ -38,7 +38,6 @@ public class IndexFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-	
 		FlightReservationService service = new FlightReservationService();
 		ReservationDA da = new ReservationDA();
 		service.setDa(da);

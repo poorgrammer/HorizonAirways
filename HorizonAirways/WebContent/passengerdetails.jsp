@@ -12,9 +12,12 @@
 </head>
 <body>
 
+	<div class="header">
+		<img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/>
+	</div>
+
 
 	<fieldset>
-
 		<legend>Personal Details Form</legend>
 	
 
