@@ -94,8 +94,9 @@
 			</c:forEach>
 		</table>
 
-	</font>
+		
 
+	</font>
 </body>
 
 

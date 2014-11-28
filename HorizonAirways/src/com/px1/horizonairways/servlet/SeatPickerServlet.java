@@ -19,6 +19,7 @@ import com.px1.horizonairways.daimpl.FlightDAImpl;
 import com.px1.horizonairways.daimpl.ReservationDA;
 import com.px1.horizonairways.entity.AircraftLayout;
 import com.px1.horizonairways.entity.FlightId;
+import com.px1.horizonairways.entity.PassengerSeatPlan;
 import com.px1.horizonairways.service.FlightReservationService;
 import com.px1.horizonairways.service.FlightService;
 
@@ -27,8 +28,7 @@ import com.px1.horizonairways.service.FlightService;
  */
 public class SeatPickerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-     private static int rowCounter;
-     private List<String> seatNos;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -49,77 +49,33 @@ public class SeatPickerServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String flightNo = "HA876";
-		String flightDate = "2015-01-16";		
-		FlightReservationService frs = new FlightReservationService();
-		frs.setDa(new ReservationDA());
+		String flightDate = "2015-01-16";
+		FlightId flightId  = null;
+
 		
 		try {
-			seatNos = frs.getAllOccupiedSeatsByFlight(new FlightId(flightNo,new SimpleDateFormat("yyyy-MM-dd").parse(flightDate)));
+			flightId = new FlightId(flightNo,new SimpleDateFormat("yyyy-MM-dd").parse(flightDate));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		rowCounter = 1;
-		FlightService fs = new FlightService(new FlightDAImpl());
-		AircraftLayout aircraftLayout = fs.getAircraftLayout(flightNo);
+
 //		
-		String firstClassZone = createClassArea("firstClassZone", aircraftLayout.getFirstClassRows(), aircraftLayout.getFirstClassSeatArrangement(),"first");
-		String businessClassZone = createClassArea("businessClassZone", aircraftLayout.getBusinessClassRows(), aircraftLayout.getBusinessClassSeatArrangement(),"business");
-		String economyClassZone = createClassArea("economyClassZone", aircraftLayout.getEconomyClassRows(), aircraftLayout.getEconomyClassSeatArrangement(),"economy");
-
+		FlightReservationService frs = new FlightReservationService(new ReservationDA());
+		PassengerSeatPlan seatPlan = frs.getPassengerSeatPlanByFlightId(flightId);
+		
 		
 
 		
-		request.setAttribute("firstClassZone",firstClassZone);
-		request.setAttribute("businessClassZone",businessClassZone);
-		request.setAttribute("economyClassZone",economyClassZone);
+		request.setAttribute("passengerSeatPlan",seatPlan);
+//		request.setAttribute("businessClassZone",businessClassZone);
+//		request.setAttribute("economyClassZone",economyClassZone);
 		RequestDispatcher rd = request.getRequestDispatcher("./SeatPicker.jsp");
 		rd.forward(request, response);
 	}
 	
 	
-	public String createClassArea(String tableId,int numOfRows,int[] arrangement,String seatClass){
-		StringBuffer stringHTML = new StringBuffer();
-		int fcSumPerRow = 0;
-		int aisleCnt = 0;
-		int noOfAisle = (arrangement.length -1);
-		for(int i=0;i< arrangement.length;i++){
-			fcSumPerRow+=arrangement[i];
-		}
-		
-		stringHTML.append("<table id='"+tableId+"'>");
-		for(int fcRows=1; fcRows <= numOfRows;fcRows++){
-			stringHTML.append("<tr>");
-			char start='A';
-			for(int fcCols=0;fcCols < arrangement.length;fcCols++){
-					
-					for(int i=0;i<arrangement[fcCols];i++){
-						String seatNo = String.valueOf((char)start)+rowCounter;
-						if(seatNos.contains(seatNo)){
-							stringHTML.append("<td class='occupied seat'>");
-						}else{
-							stringHTML.append("<td class='available seat'>");
-						}
-						stringHTML.append(seatNo);
-						stringHTML.append("<div class='seatNo' hidden>"+seatNo+"</div>");
-						stringHTML.append("<div class='seatClass' hidden>"+seatClass+"</div>");
-						stringHTML.append("</td>");
-							start++;
-					}
-					if(aisleCnt < noOfAisle){
-					stringHTML.append("<td class='aisle'></td>");
-					aisleCnt++;
-					}
-					
-			}
-			aisleCnt = 0;
-			rowCounter++;
-			stringHTML.append("</tr>");
-		}
-		stringHTML.append("</table>");
-		
-		return stringHTML.toString();
-	}
+	
 
 }

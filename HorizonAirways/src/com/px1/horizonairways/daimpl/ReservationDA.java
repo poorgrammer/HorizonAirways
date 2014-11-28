@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,14 +30,14 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	private static final String GET_ALL_FLIGHT_DETAILS = "SELECT * FROM flightschedules ";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_SECTOR = "SELECT * FROM vwflightschedules WHERE sectorid = ? AND FlightDate > ?";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTID = "SELECT * FROM flightdetails WHERE FlightNo = ? AND FlightDate = ?";
-	private static final String GET_ALL_RESERVED_FLIGHTS_BY_PNR = "SELECT * FROM reservedflights WHERE pnrno = ?";
+	private static final String GET_ALL_RESERVED_FLIGHTS_BY_PNR = "SELECT rs.pnrno, rs.flightno, rs.flightdate, rs.seatno, rs.class, rs.meal, rs.ssr FROM reservedflights rs, passenger p WHERE rs.pnrno = ? AND rs.pnrno = p.pnrno AND p.cancelFlag = '0' AND flightDate > ?";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO_AND_DATE = "SELECT * FROM vwflightschedules WHERE flightNo = ? AND flightDate > ?";
 	private static final String GET_FLIGHT_FARE_BY_SECTOR = "SELECT * FROM flightdetails WHERE sectorid = ?";
 private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo FROM reservedflights WHERE FlightNo = ? AND FlightDate = ?";
 	private static final String SAVE_PASSENGER_DETAILS = "INSERT INTO passenger VALUES(?,?,?,?,?,?,?,?)";
 	private static final String GET_PASSENGER_PNR = "SELECT pnrno FROM passenger WHERE firstname = ? AND lastname = ? and birthdate = ? AND reservationdate = ?";
 	private static final String SAVE_FLIGHT_RESERVATION = "INSERT INTO reservedflights VALUES(?,?,?,?,?,?,?)";
-	private static final String CANCEL_REGISTRATION = "UPDATE passenger SET cancelflag=1 WHERE pnr = ?";
+	private static final String CANCEL_REGISTRATION = "UPDATE passenger SET cancelflag=1 WHERE pnrNo = ?";
 	private static final String GET_PASSENGER_BY_PNR = "SELECT * FROM passenger WHERE pnrno = ?";
 
 	public List<FlightSchedule> getAllFlightSchedule() {
@@ -196,6 +198,16 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 			ps = DatabaseConnector.getConnection().prepareStatement(
 					GET_ALL_RESERVED_FLIGHTS_BY_PNR);
 			ps.setString(1, pnr);
+			
+			Date date = new Date();
+			Calendar calendar = new GregorianCalendar();
+			calendar.setTime(date);
+			calendar.set(Calendar.HOUR, 0);
+			calendar.set(Calendar.MINUTE, 0);
+			calendar.set(Calendar.SECOND, 0);
+			calendar.set(Calendar.MILLISECOND, 0);
+			date = calendar.getTime();
+		ps.setDate(2, new java.sql.Date(date.getTime()));
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 
@@ -472,6 +484,7 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 		PreparedStatement ps = null;
 		try {
 			ps = DatabaseConnector.getConnection().prepareStatement(CANCEL_REGISTRATION);
+			ps.setString(1, pnr);
 			rows = ps.executeUpdate();
 		} catch (SQLException e) {
 
@@ -487,7 +500,7 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 			}
 			
 		}
-		
+		System.out.println(rows);
 		return rows;
 		
 	}
@@ -513,6 +526,7 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 				String email = rs.getString(8);
 				Date reservationDate = rs.getDate(9);	
 				passenger = new Passenger(lastName, firstName, birthDay, gender, cancelFlag, mobileNo, email, reservationDate);
+				passenger.setPnr(pnrNo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

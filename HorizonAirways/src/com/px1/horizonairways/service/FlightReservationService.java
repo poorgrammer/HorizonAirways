@@ -10,6 +10,7 @@ import com.px1.horizonairways.entity.FlightDetails;
 import com.px1.horizonairways.entity.FlightId;
 import com.px1.horizonairways.entity.FlightSchedule;
 import com.px1.horizonairways.entity.Passenger;
+import com.px1.horizonairways.entity.PassengerSeatPlan;
 import com.px1.horizonairways.entity.ReservedFlight;
 
 public class FlightReservationService {
@@ -30,7 +31,6 @@ public class FlightReservationService {
 	
 	public List<FlightSchedule> getAllFlightSchedule(){
 		return da.getAllFlightSchedule();
-		
 	}
 	
 	public List<FlightDetails> getAllFlightDetailsByNumAndDate(String flightNo, Date flightDate){
@@ -49,7 +49,6 @@ public class FlightReservationService {
 		return da.getFlightDetails(id);
 	}
 	
-
 	public List<String> getAllOccupiedSeatsByFlight(FlightId flightId){
 		return da.getAllOccupiedSeatsByFlight(flightId);
 	}
@@ -59,7 +58,6 @@ public class FlightReservationService {
 	
 	public int saveReservationDetails(ReservedFlight reservedFlight){
 		return da.saveFlightReservation(reservedFlight);
-		
 	}
 	
 	public String getPassengerPNR(Passenger passenger){
@@ -74,5 +72,19 @@ public class FlightReservationService {
 		return da.getPassengerDetailsByPNR(pnr);
 
 	}
+
+	public List<ReservedFlight> getAllReservedFlights(String pnr){
+		return da.getReservedFlights(pnr);
+	}
 	
+	public PassengerSeatPlan getPassengerSeatPlanByFlightId(FlightId flightId){
+		PassengerSeatPlan seatPlan =  new PassengerSeatPlan(flightId,da);
+		return seatPlan;
+	}
+	
+
+
+
+
+
 }

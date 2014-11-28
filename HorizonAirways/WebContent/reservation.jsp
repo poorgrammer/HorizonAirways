@@ -9,7 +9,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="stylesheet" href="css/reservation.css"/>
-<link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/tableDesign.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Make Reservation</title>
@@ -17,6 +16,7 @@
 
 <body>
 <font face="Arial, Helvetica, sans-serif" size="-1">
+
     <div class="header">
 		<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
 			<div>
@@ -38,7 +38,7 @@
 					<c:otherwise>
 						<div>
 							<form>
-								<input type="submit" name="logout" value="Log out"/>
+								<input type="submit" name="logout" value="Log out" align="right"/>
 							</form>
 						</div>
 					</c:otherwise>

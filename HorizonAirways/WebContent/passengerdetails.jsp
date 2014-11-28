@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,24 +9,19 @@
 <link rel="stylesheet" href="css/header.css">
 <title>Passenger Details</title>
 </head>
-
 <body>
-<font face="Arial, Helvetica, sans-serif" size="-1">
+
 	<div class="header">
-		<div>
-			<img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/>
-		</div>
+		<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
 		<div>
 			<form>
-				<input type="submit" name="logout" value="Log out" align="right"/>
+				<input type="submit" name="logout" value="Log out" />
 			</form>
 		</div>
 	</div>
-	
-	<br/>
-	<!-- <fieldset>
-		<legend>Personal Details Form</legend>
 
+	<fieldset>
+		<legend>Personal Details Form</legend>
 		<div>
 			<label for="firstName">First Name: </label>
 			<input type="text"  name="firstName" id="firstName">
@@ -63,7 +57,6 @@
 		<div class="button">
 			<input type="submit" value="Submit"/>
 		</div>
-	</fieldset>  -->
-</font>
+	</fieldset>
 </body>
 </html>

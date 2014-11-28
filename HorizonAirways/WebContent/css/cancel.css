@@ -4,11 +4,6 @@
 	
 }
 
-body{
-	width:30%;
-	color:Black;
-}
-
 fieldset{
 	margin-top:20px;
 	padding:10px;
@@ -24,11 +19,10 @@ div{
 
 label{
 	display:block;
-	width:120px;
+	width:140px;
 	float:left;
 	text-align:right;
 	margin-right:20px;
-	
 }
 
 input[type="text"], input[type="date"], textarea, input[type="email"] {
@@ -51,7 +45,7 @@ div.button{
 	text-align:center;
 }
 
-input[type="submit"]{
+/* input[type="submit"]{
 	display:inline;
 	background-color:White;
 	width:200px;
@@ -62,10 +56,31 @@ input[type="submit"]:hover{
 	cursor:pointer;
 	background-color:Black;
 	color:White;
-}
+} */
 
 input[type="date"]{
 	text-transform:uppercase;
 
+}
+
+.reservedFlightsTable {
+	display: table;
+}
+.row {
+	display: table-row;
+}
+.cell {
+	display: table-cell;
+	padding-right: 20px;
+	padding-top: 3px;
+}
+.tableContainer {
+	display: inline-block;
+	margin-left: 100px;
+	margin-bottom: 160px;
+}
+.formDiv {
+	max-width: 50%;
+	display: inline-block;
 }
 
