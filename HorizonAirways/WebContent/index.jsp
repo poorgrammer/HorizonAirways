@@ -4,9 +4,9 @@
 <%@page import="com.px1.horizonairways.entity.FlightSchedule"%>
 <%@page import="com.px1.horizonairways.entity.User"%>
 <%@page import="java.util.*"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,36 +21,40 @@
 		<div class="header">
 			<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
 			<div>
-			<c:choose>
-				<c:when test="${ empty sessionScope.user}">
-					<form action="./login" method="post">
-						<table>
-							<tr>
-								<td><p>User Name</p></td>
-								<td><input type="text" name="userName" /></td>
-								<td><p>Password</p></td>
-								<td><input type="password" name="password" /></td>
-								<td><input type="submit" name="submit" value="Log in" /></td>
-							</tr>
-						</table>
-					</form>
-				</c:when>
-				<c:otherwise>
-					<form>
-						<input type="submit" name="logout" value="Log out" align="right"/>
-					</form>
-				</c:otherwise>
-			</c:choose>
+				<c:choose>
+					<c:when test="${ empty sessionScope.user}">
+						<form action="./login" method="post">
+							<table>
+								<tr>
+									<td><p>User Name</p></td>
+									<td><input type="text" name="userName" /></td>
+									<td><p>Password</p></td>
+									<td><input type="password" name="password" /></td>
+									<td><input type="submit" name="submit" value="Log in" /></td>
+								</tr>
+							</table>
+						</form>
+					</c:when>
+				
+					<c:otherwise>
+						<div>
+							<form>
+								<input type="submit" name="logout" value="Log out" align="right"/>
+							</form>
+						</div>
+					</c:otherwise>
+				
+				</c:choose>
 			</div>
 		</div>
 		
-		<div>
-			<c:if test="${not empty sessionScope.user}">
-				<a href="./cancel.jsp">Cancel Flight</a>
-				<c:if test="${sessionScope.user.admin}">
-					<a href="./reservation.jsp">View Reports</a>
-				</c:if>
-			</c:if>
+		<div class="nav">
+        	<c:if test="${sessionScope.user.admin}">
+				<a href="./reservation.jsp"><b>View Reports</b></a>
+           		<c:if test="${not empty sessionScope.user}">
+                	<a href="./cancel.jsp"><b>Cancel Flight</b></a>
+                </c:if>
+            </c:if>
 		</div>
 
 		<table class="flightDetails">
@@ -65,14 +69,13 @@
 				<th rowspan="2" scope="col">Action</th>
 			</tr>
 
-			<tr class="classes">
+			<tr class="flightClasses">
 				<th scope="col">First Class</th>
 				<th scope="col">Business Class</th>
 				<th scope="col">Economy Class</th>
 			</tr>
 
-			<c:forEach items="${applicationScope.flightScheduleList}"
-				var="flightSchedule">
+			<c:forEach items="${applicationScope.flightScheduleList}" var="flightSchedule">
 
 				<tr class="detailItem">
 					<td class="flightNo">${flightSchedule.flightNo}</td>
@@ -91,8 +94,6 @@
 		</table>
 
 	</font>
-	
-	
 
 </body>
 

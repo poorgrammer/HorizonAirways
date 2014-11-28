@@ -76,6 +76,7 @@ public class FlightReservationService {
 
 	}
 	
+
 	public List<ReservedFlight> getAllReservedFlights(String pnr){
 		return da.getReservedFlights(pnr);
 	}
@@ -85,4 +86,9 @@ public class FlightReservationService {
 		return seatPlan;
 	}
 	
+
+
+
+
+
 }

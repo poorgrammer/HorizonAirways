@@ -89,4 +89,16 @@
     <url-pattern>/CancelReservation</url-pattern>
 
   </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>PassengerDetailsServlet</display-name>
+    <servlet-name>PassengerDetailsServlet</servlet-name>
+    <servlet-class>com.px1.horizonairways.servlet.PassengerDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PassengerDetailsServlet</servlet-name>
+    <url-pattern>/PassengerDetails</url-pattern>
+  </servlet-mapping>
 </web-app>
+
