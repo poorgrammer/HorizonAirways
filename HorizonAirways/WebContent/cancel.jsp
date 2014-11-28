@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@page import="com.px1.horizonairways.entity.ReservedFlight"%>
+<%@page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +59,9 @@
 	
 		
 	
-	<% if(request.getAttribute("reservedFlights")!=null){ %>
+	<% 
+
+	if((request.getAttribute("reservedFlights")!=null) && (((List<ReservedFlight>)request.getAttribute("reservedFlights")).size() != 0)){ %>
 	
 	
 	<table>
@@ -93,11 +96,13 @@
 		
 		<td><a href="./CancelReservation?flightNo=${reservedFlight.flightNo}&amp;pnrNo=${requestScope.passenger.pnr}"><b>Cancel Flight</b></a></td>
 	<% }
-	
+	else{
 	
 	%>
-	
-
+		<h3>There are no scheduled flights for this passenger. <a href="./index.jsp">Back to home page.</a></h3>
+<%
+	}
+%>
 </div>
 
 </form>

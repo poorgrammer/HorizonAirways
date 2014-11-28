@@ -30,7 +30,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 	private static final String GET_ALL_FLIGHT_DETAILS = "SELECT * FROM flightschedules ";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_SECTOR = "SELECT * FROM vwflightschedules WHERE sectorid = ? AND FlightDate > ?";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTID = "SELECT * FROM flightdetails WHERE FlightNo = ? AND FlightDate = ?";
-	private static final String GET_ALL_RESERVED_FLIGHTS_BY_PNR = "SELECT * FROM reservedflights WHERE pnrno = ? AND flightDate > ?";
+	private static final String GET_ALL_RESERVED_FLIGHTS_BY_PNR = "SELECT rs.pnrno, rs.flightno, rs.flightdate, rs.seatno, rs.class, rs.meal, rs.ssr FROM reservedflights rs, passenger p WHERE rs.pnrno = ? AND rs.pnrno = p.pnrno AND p.cancelFlag = '0' AND flightDate > ?";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO_AND_DATE = "SELECT * FROM vwflightschedules WHERE flightNo = ? AND flightDate > ?";
 	private static final String GET_FLIGHT_FARE_BY_SECTOR = "SELECT * FROM flightdetails WHERE sectorid = ?";
 private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo FROM reservedflights WHERE FlightNo = ? AND FlightDate = ?";
