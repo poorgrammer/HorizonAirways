@@ -32,7 +32,7 @@ public class ReservationServlet extends HttpServlet {
      */
     public ReservationServlet() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
 
 	/**
@@ -52,7 +52,7 @@ public class ReservationServlet extends HttpServlet {
 		session.setAttribute("flightFareMap", flightFareMap);
 		
 		Date date = new Date();
-		Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+		Calendar calendar = new GregorianCalendar();
 		calendar.setTime(date);
 		calendar.add(Calendar.DATE, 30);
 		calendar.set(Calendar.HOUR, 0);

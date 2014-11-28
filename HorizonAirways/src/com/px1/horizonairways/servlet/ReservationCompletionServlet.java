@@ -25,7 +25,7 @@ public class ReservationCompletionServlet extends HttpServlet {
      */
     public ReservationCompletionServlet() {
         super();
-        // TODO Auto-generated constructor stub
+ 
     }
 
 	/**
@@ -40,19 +40,21 @@ public class ReservationCompletionServlet extends HttpServlet {
 		Passenger passenger = (Passenger)session.getAttribute("passenger");
 		FlightDetails firstFlight = (FlightDetails) session.getAttribute("firstFlight");
 		service.insertPassengerDetails(passenger);
-		String seatNo = (String)session.getAttribute("seatNo");
-		String seatClass = (String)session.getAttribute("seatClass");
-		String mealPreference = (String)session.getAttribute("mealPreference");
-		String SSR = (String)session.getAttribute("SSR");
+		String firstSeatNo = request.getParameter("firstSeatNo");
+		String firstSeatClass = request.getParameter("firstSeatClass");
+		String mealPreference = request.getParameter("mealPreference");
+		String SSR = request.getParameter("SSR");
 		
 		String pnr = service.getPassengerPNR(passenger);
 		passenger.setPnr(pnr);
-		ReservedFlight reservedFlight = new ReservedFlight(passenger.getPnr(), firstFlight.getFlightNo(), firstFlight.getFlightDate(), seatNo, seatClass, mealPreference, SSR);
+		ReservedFlight reservedFlight = new ReservedFlight(passenger.getPnr(), firstFlight.getFlightNo(), firstFlight.getFlightDate(), firstSeatNo.toUpperCase(), firstSeatClass, mealPreference, SSR);
 		int result = service.saveReservationDetails(reservedFlight);
 		
 		if(session.getAttribute("secondFlight")!=null){
+			String secondSeatNo = request.getParameter("secondSeatNo");
+			String secondSeatClass = request.getParameter("secondSeatClass");
 			FlightDetails secondFlight = (FlightDetails) session.getAttribute("secondFlight");
-			 reservedFlight = new ReservedFlight(passenger.getPnr(), secondFlight.getFlightNo(), secondFlight.getFlightDate(), seatNo, seatClass, mealPreference, SSR);
+			 reservedFlight = new ReservedFlight(passenger.getPnr(), secondFlight.getFlightNo(), secondFlight.getFlightDate(), secondSeatNo.toUpperCase(), secondSeatClass, mealPreference, SSR);
 			service.saveReservationDetails(reservedFlight);
 		}
 		

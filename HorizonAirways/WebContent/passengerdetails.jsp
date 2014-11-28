@@ -8,9 +8,30 @@
 <link rel="stylesheet" href="css/passenger.css">
 <link rel="stylesheet" href="css/header.css">
 <title>Passenger Details</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	$( ".available.seat").click(function(){
+		if($(this).parents(".${requestScope.flightId1}").length){
+			$("#firstSeatNo").val($(this).children("div.seatNo").text());
+			$("#firstSeatClass").val($(this).children("div.seatClass").text());
+			$(".${requestScope.flightId1} .selected.seat").removeClass("selected");
+			$(this).addClass("selected");
+		}if($(this).parents(".${requestScope.flightId2}").length){
+			$("#secondSeatNo").val($(this).children("div.seatNo").text());
+			$("#secondSeatClass").val($(this).children("div.seatClass").text());
+			$(".${requestScope.flightId2} .selected.seat").removeClass("selected");
+			$(this).addClass("selected");
+		}
+
+	});
+
+});
+</script>
+
 </head>
 <body>
-
 	<div class="header">
 		<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
 		<div>
@@ -53,10 +74,78 @@
 			<label for="emailAddress">Email Address: </label>
 			<input type="email" name="emailAddress" id="emailAddress">
 		</div>
+		<div>
+			<label for="mealPreference">Meal Preference: </label>
+			<input type="text" name="mealPreference" id="mealPreference" required>
+		</div>
+		<div>
+			<label for="SSR">SSR: </label>
+			<input type="text" name="SSR" id="SSR" required placeholder="Put NA if not applicable">
+		</div>
+		<div><h2>Flight Reservation Preferences</h2></div>
+		<div>
+			<label for="firstSeatNo">Seat No: </label>
+			<input type="text" name="firstSeatNo" id="firstSeatNo" class="${requestScope.flightId1}" required disabled>
+		</div>
+		<div>
+			<label for="firstSeatClass">Seat Class: </label>
+			<input type="text" name="firstSeatClass" id="firstSeatClass" class="${requestScope.flightId1}" required disabled>
+		</div>
+		
+		<% 
+			if(session.getAttribute("secondFlight")!=null){
+		%>
+		
+		<div><h2>Second Flight Reservation Preferences</h2></div>
+		<div>
+			<label for="secondSeatNo">Seat No: </label>
+			<input type="text" name="secondSeatNo" id="secondSeatNo" class="${requestScope.flightId2}" required disabled>
+		</div>
+		<div>
+			<label for="secondSeatClass">Seat Class: </label>
+			<input type="text" name="secondSeatClass" id="secondSeatClass" class="${requestScope.flightId2}" required disabled>
+		</div>
+		<% 
+			}
+		%>
 		
 		<div class="button">
 			<input type="submit" value="Submit"/>
 		</div>
 	</fieldset>
+
+	<c:set var="firstSeatPlan" value="${requestScope.firstPassengerSeatPlan}" />
+		<div>
+			<div class="area">
+				${firstSeatPlan.firstClassHTML}
+			</div>
+			<div class="area">
+				${firstSeatPlan.businessClassHTML}
+			</div>
+			<div class="area">
+				${firstSeatPlan.economyClassHTML}
+			</div>
+		</div>
+		
+	<br/><br/>
+	<hr/>
+	<br/><br/>
+	
+	<c:if test="${not empty requestScope.secondPassengerSeatPlan}">
+		<c:set var="secondSeatPlan" value="${requestScope.secondPassengerSeatPlan}" />
+		<div>
+			<div class="area">
+			${secondSeatPlan.firstClassHTML}
+			</div>
+			<div class="area">
+			${secondSeatPlan.businessClassHTML}
+			</div>
+			<div class="area">
+			${secondSeatPlan.economyClassHTML}
+			</div>
+	
+		</div>
+	</c:if>
+	
 </body>
 </html>
