@@ -145,12 +145,12 @@ $(document).ready(function(){
 		
 		<div>
 			<label for="firstSeatNo">Seat No: </label>
-			<input type="text" name="firstSeatNo" id="firstSeatNo" class="${requestScope.flightId1}" required>
+			<input type="text" name="firstSeatNo" id="firstSeatNo" class="${requestScope.flightId1}" required disabled>
 		</div>
 		
 		<div>
 			<label for="firstSeatClass">Seat Class: </label>
-			<input type="text" name="firstSeatClass" id="firstSeatClass" class="${requestScope.flightId1}" required>
+			<input type="text" name="firstSeatClass" id="firstSeatClass" class="${requestScope.flightId1}" required disabled>
 		</div>
 		
 	
@@ -163,12 +163,12 @@ $(document).ready(function(){
 		
 		<div>
 			<label for="secondSeatNo">Seat No: </label>
-			<input type="text" name="secondSeatNo" id="secondSeatNo" class="${requestScope.flightId2}" required>
+			<input type="text" name="secondSeatNo" id="secondSeatNo" class="${requestScope.flightId2}" required disabled>
 		</div>
 		
 		<div>
 			<label for="secondSeatClass">Seat Class: </label>
-			<input type="text" name="secondSeatClass" id="secondSeatClass" class="${requestScope.flightId2}" required>
+			<input type="text" name="secondSeatClass" id="secondSeatClass" class="${requestScope.flightId2}" required disabled>
 		</div>
 		
 				
@@ -204,8 +204,7 @@ ${firstSeatPlan.businessClassHTML}
 <div class="area">
 ${firstSeatPlan.economyClassHTML}
 </div>
-<input type="hidden" name="seatNo" id="seatNo" />
-<input type="hidden" name="seatClass" id="seatClass" />
+
 </div>
 <br/>
 <br/>
@@ -224,8 +223,7 @@ ${firstSeatPlan.economyClassHTML}
 		<div class="area">
 		${secondSeatPlan.economyClassHTML}
 		</div>
-		<input type="hidden" name="seatNo" id="seatNo" />
-		<input type="hidden" name="seatClass" id="seatClass" />
+
 	</div>
 </c:if>
 
