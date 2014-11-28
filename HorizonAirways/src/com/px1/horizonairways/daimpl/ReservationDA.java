@@ -240,7 +240,6 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 				}
 			}
 		}
-
 		return reservedFlights;
 
 	}

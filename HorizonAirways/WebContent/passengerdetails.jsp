@@ -29,7 +29,6 @@
 	
 
 		<div>
-		
 			<label for="firstName">First Name: </label>
 			<input type="text"  name="firstName" id="firstName" required>
 		</div>
@@ -61,6 +60,52 @@
 			<input type="email" name="emailAddress" id="emailAddress">
 		</div>
 		
+		<div>
+			<label for="mealPreference">Meal Preference: </label>
+			<input type="text" name="mealPreference" id="mealPreference" required>
+		</div>
+		
+		<div>
+			<label for="SSR">SSR: </label>
+			<input type="text" name="SSR" id="SSR" required placeholder="Put NA if not applicable">
+		</div>
+		
+		<div><h2>Flight Reservation Preferences</h2></div>
+		
+		<div>
+			<label for="firstSeatNo">Seat No: </label>
+			<input type="text" name="firstSeatNo" id="firstSeatNo" required>
+		</div>
+		
+		<div>
+			<label for="firstSeatClass">Seat Class: </label>
+			<input type="text" name="firstSeatClass" id="firstSeatClass" required>
+		</div>
+		
+	
+		
+		<% 
+			if(session.getAttribute("secondFlight")!=null){
+		%>
+				
+				<div><h2>Second Flight Reservation Preferences</h2></div>
+		
+		<div>
+			<label for="secondSeatNo">Seat No: </label>
+			<input type="text" name="secondSeatNo" id="secondSeatNo" required>
+		</div>
+		
+		<div>
+			<label for="secondSeatClass">Seat Class: </label>
+			<input type="text" name="secondSeatClass" id="secondSeatClass" required>
+		</div>
+		
+				
+		<% 
+			}
+		%>
+		
+		
 		<div class="button">
 			<input type="submit" value="Submit"/>
 		</div>
@@ -68,10 +113,7 @@
 
 	</fieldset>
 	</form>
-	</div>
-	<div>
 
-<jsp:include page="./SeatPicker.jsp" />
-</div>
+	
 </body>
 </html>

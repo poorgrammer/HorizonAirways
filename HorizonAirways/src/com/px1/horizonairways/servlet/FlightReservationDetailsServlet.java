@@ -69,6 +69,8 @@ else {
 	
 	try {
 		session.setAttribute("firstFlight", service.getFlightDetailsById(new FlightId(session.getAttribute("firstFlightNo").toString(),format.parse(request.getParameter("firstFlight")))));
+	session.setAttribute("secondFlight", null);
+	
 	} catch (ParseException e) {
 
 		e.printStackTrace();

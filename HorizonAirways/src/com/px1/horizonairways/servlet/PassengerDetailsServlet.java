@@ -58,7 +58,7 @@ public class PassengerDetailsServlet extends HttpServlet {
 		
 		Passenger passenger = new Passenger(lastName, firstName, birthDay, gender, 0, mobileNo, emailAddress, date);
 		request.getSession().setAttribute("passenger", passenger);
-		request.getRequestDispatcher("/seatpicker").forward(request, response);
+		request.getRequestDispatcher("/reservationCompletion").forward(request, response);
 	}
 
 	
