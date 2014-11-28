@@ -83,28 +83,28 @@ $(document).ready(function(){
 			<label for="SSR">SSR: </label>
 			<input type="text" name="SSR" id="SSR" >
 		</div>
-		<div><h2>Flight Reservation Preferences</h2></div>
+		<div><h3>Flight: ${firstFlight.flightNo} - ${firstFlight.sectorId}</h3></div>
 		<div>
 			<label for="firstSeatNo">Seat No: </label>
-			<input type="text" name="firstSeatNo" id="firstSeatNo" class="${requestScope.flightId1}" required>
+			<input type="text" name="firstSeatNo" id="firstSeatNo" class="${requestScope.flightId1}" required readonly>
 		</div>
 		<div>
 			<label for="firstSeatClass">Seat Class: </label>
-			<input type="text" name="firstSeatClass" id="firstSeatClass" class="${requestScope.flightId1}" required>
+			<input type="text" name="firstSeatClass" id="firstSeatClass" class="${requestScope.flightId1}" required readonly>
 		</div>
 		
 		<% 
 			if(session.getAttribute("secondFlight")!=null){
 		%>
 		
-		<div><h2>Second Flight Reservation Preferences</h2></div>
+		<div><h3>Flight: ${secondFlight.flightNo} - ${secondFlight.sectorId}</h3></div>
 		<div>
 			<label for="secondSeatNo">Seat No: </label>
-			<input type="text" name="secondSeatNo" id="secondSeatNo" class="${requestScope.flightId2}" required>
+			<input type="text" name="secondSeatNo" id="secondSeatNo" class="${requestScope.flightId2}" required readonly>
 		</div>
 		<div>
 			<label for="secondSeatClass">Seat Class: </label>
-			<input type="text" name="secondSeatClass" id="secondSeatClass" class="${requestScope.flightId2}" required>
+			<input type="text" name="secondSeatClass" id="secondSeatClass" class="${requestScope.flightId2}" required readonly>
 		</div>
 		<% 
 			}
