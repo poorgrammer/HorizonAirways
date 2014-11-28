@@ -36,12 +36,12 @@
 			</div>
 			<div>
 				<label for="lastName">Last Name: </label>
-				<input type="text" name="lastName" id="lastName" disabled value="${requestScope.passenger.firstName}" >
+				<input type="text" name="lastName" id="lastName" disabled value="${requestScope.passenger.lastName}" >
 			</div>
-			<div>
+<!-- 		<div>
 				<label for="address">Address: </label>
-				<textarea  name="address" id="address" disabled>${requestScope.passenger.lastName}</textarea>
-			</div>
+				<textarea  name="address" id="address" disabled></textarea>
+			</div> -->
 			<div>
 				<label for="gender">Gender </label>
 				<input type="text" name="gender" id="gender" disabled value="${requestScope.passenger.gender}" >

@@ -77,7 +77,10 @@ $(document).ready(function(){
 		</div>
 		<div>
 			<label for="mealPreference">Meal Preference: </label>
-			<input type="text" name="mealPreference" id="mealPreference" required>
+			<select name="mealPreference" id="mealPreference">
+				<option value="Non-Vegetarian">Non-Vegetarian</option>
+				<option value="Vegetarian">Vegetarian</option>
+			</select>
 		</div>
 		<div>
 			<label for="SSR">SSR: </label>
@@ -110,6 +113,7 @@ $(document).ready(function(){
 			}
 		%>
 		
+		<div><h2>Price:</h2></div>
 		<input type="submit" value="Submit" class="submit"/>
 	</div>
 	</form>
