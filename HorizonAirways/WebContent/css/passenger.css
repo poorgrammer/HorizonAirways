@@ -5,11 +5,13 @@
 }
 
 body{
-	width:30%;
+	width:100%;
 	color:Black;
 }
 
 fieldset{
+	margin-right: auto;
+	margin-left: auto;
 	padding:10px;
 }
 
@@ -17,9 +19,9 @@ legend{
 	text-align:center;
 	
 }
+
 div{
 	margin-bottom:5px;
-	
 }
 
 label{
@@ -64,15 +66,5 @@ input[type="submit"]:hover{
 
 input[type="date"]{
 	text-transform:uppercase;
-}
-
-.header {
-	background:-o-linear-gradient(bottom, #ff5656 5%, #7f0000 100%);	
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff5656), color-stop(1, #7f0000) );	
-	background:-moz-linear-gradient( center top, #ff5656 5%, #7f0000 100% );	
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff5656", endColorstr="#7f0000");	
-	background: -o-linear-gradient(top,#ff5656,7f0000);
-	background-color:#ff5656;
-	width: 100%;
 }
 

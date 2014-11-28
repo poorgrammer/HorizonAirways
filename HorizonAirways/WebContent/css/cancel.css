@@ -4,14 +4,11 @@
 	
 }
 
-
 body{
-	
 	width:30%;
-color:Black;
-
-
+	color:Black;
 }
+
 fieldset{
 	margin-top:20px;
 	padding:10px;
@@ -19,16 +16,14 @@ fieldset{
 
 legend{
 	text-align:center;
-	
 }
+
 div{
 	margin-bottom:5px;
-	
 }
 
-
 label{
-display:block;
+	display:block;
 	width:120px;
 	float:left;
 	text-align:right;
@@ -48,24 +43,20 @@ textarea{
 	width:195px;
 	resize:none;
 }
+
 div.button{
-width:250px;clear:both;
+	width:250px;clear:both;
 	margin:10px auto 0px auto;
 	overflow:auto;
-text-align:center;
-
+	text-align:center;
 }
 
 input[type="submit"]{
 	display:inline;
-background-color:White;
-width:200px;
-border:1px solid black;
-
-	
+	background-color:White;
+	width:200px;
+	border:1px solid black;
 }
-
-
 
 input[type="submit"]:hover{
 	cursor:pointer;
@@ -77,6 +68,4 @@ input[type="date"]{
 	text-transform:uppercase;
 
 }
-
-
 

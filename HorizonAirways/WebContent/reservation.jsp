@@ -9,6 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="stylesheet" href="css/reservation.css"/>
+<link rel="stylesheet" href="css/headerWithLogin.css">
 <link rel="stylesheet" href="css/tableDesign.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Make Reservation</title>
@@ -16,7 +17,6 @@
 
 <body>
 <font face="Arial, Helvetica, sans-serif" size="-1">
-
     <div class="header">
 		<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
 			<div>
@@ -70,7 +70,7 @@
     	</td>
         
         <td>
-        	<h3>Departure</h3>
+        	<h2>Departure</h2>
         	<table class="flightDetails">
 	             <tr>
 	               <th rowspan="2" scope="col">Flight No.</th>
@@ -80,6 +80,7 @@
 	               <th rowspan="2" scope="col">Departure Time</th>
 	               <th rowspan="2" scope="col">Arrival Time</th>
 	               <th colspan="3" scope="col">Remaining Seats</th>
+	               <th rowspan="2" scope="col"></th>
 	             </tr>
 	             <tr class="flightClasses">
 	               <th scope="col">First Class</th>
@@ -123,7 +124,7 @@
     	</td>
         
         <td>
-        	<h3>Return</h3>
+        	<h2>Return</h2>
         	<table class="flightDetails">
              <tr>
                <th rowspan="2" scope="col">Flight No.</th>
@@ -133,6 +134,7 @@
                <th rowspan="2" scope="col">Departure Time</th>
                <th rowspan="2" scope="col">Arrival Time</th>
                <th colspan="3" scope="col">Remaining Seats</th>
+               <th rowspan="2" scope="col"></th>
              </tr>
              <tr class="flightClasses">
                <th scope="col">First Class</th>

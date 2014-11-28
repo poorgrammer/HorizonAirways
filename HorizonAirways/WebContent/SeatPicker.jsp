@@ -7,41 +7,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title</title>
-<style>
-table{
-	border-collapse: collapse;
-}
-table,tr,td{
-border: solid 1px black ;
-}
-td{
-
-	min-height:10px;
-	min-width:10px;
-	padding: 2px; 
-}
-.seat{
-	cursor:pointer;
-}
-.occupied.seat{
-	background-color: #dd0000;
-}
-
-.selected{
-	background-color: #00ff00 !important;
-}
-.available.seat{
-	background-color: #dddddd;
-}
-
-div.area{
-	width: 100%;
-	display: flex;
-	justify-content:center;
-}
-</style>
+<title>Seat Picker</title>
 <head>
+<link rel="stylesheet" href="css/seatPickerLayout.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){

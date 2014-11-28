@@ -5,13 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Horizon Airways</title>
+<link rel="stylesheet" href="css/headerDesign.css">
+<title>Reservation Success!</title>
 </head>
 <body>
 
-<h3>You have successfully scheduled your flight.</h3>
-<h2>Your PNR Number is <c:out value="${passenger.PNR}"></c:out>. Please keep a copy of your PNR number for future reference. Thank you!</h2>
-<div><a href="./index.jsp">Back to home page.</a></div>
+	<div class="header">
+		<img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/>
+	</div>
+
+	<h3>You have successfully scheduled your flight.</h3>
+	<h2>Your PNR Number is <u><c:out value="${passenger.PNR}"></c:out></u>.</h2>
+	<p>Please keep a copy of your PNR number for future reference. Thank you!</p>
+	<br/>
+	<div><a href="./index.jsp"><b>Back to Home Page</b></a></div>
 
 </body>
 </html>
