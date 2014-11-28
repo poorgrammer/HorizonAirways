@@ -12,6 +12,7 @@
 </head>
 <body>
 
+<form action="./passengerdetails" method="post">
 
 	<fieldset>
 
@@ -21,30 +22,30 @@
 		<div>
 		
 			<label for="firstName">First Name: </label>
-			<input type="text"  name="firstName" id="firstName">
+			<input type="text"  name="firstName" id="firstName" required>
 		</div>
 		<div>
 			<label for="lastName">Last Name: </label>
-			<input type="text" name="lastName" id="lastName" >
+			<input type="text" name="lastName" id="lastName" required>
 		</div>
 		<div>
 			<label for="address">Address: </label>
-			<textarea  name="address" id="address"></textarea>
+			<textarea  name="address" id="address" required></textarea>
 		</div>
 		<div>
 			<label for="gender">Gender: </label>
-			<select name="gender">
+			<select name="gender" required>
 				<option value="M">Male</option>
 				<option value="F">Female</option>
 			</select>
 		</div>
 		<div>
 			<label for="birthDay">Birth Day: </label>
-			<input type="date" name="birthDay" id="birthDay">
+			<input type="date" name="birthDay" id="birthDay" required>
 		</div>
 		<div>
 			<label for="mobileNo">Mobile Number: </label>
-			<input type="text" name="mobileNo" id="mobileNo" >
+			<input type="text" name="mobileNo" id="mobileNo">
 		</div>
 		<div>
 			<label for="emailAddress">Email Address: </label>
@@ -57,7 +58,8 @@
 
 
 	</fieldset>
-	<br />
+	</form>
+
 
 </body>
 </html>
