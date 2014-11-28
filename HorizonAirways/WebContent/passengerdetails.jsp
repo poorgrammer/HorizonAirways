@@ -86,11 +86,11 @@ $(document).ready(function(){
 		<div><h2>Flight Reservation Preferences</h2></div>
 		<div>
 			<label for="firstSeatNo">Seat No: </label>
-			<input type="text" name="firstSeatNo" id="firstSeatNo" class="${requestScope.flightId1}" required disabled>
+			<input type="text" name="firstSeatNo" id="firstSeatNo" class="${requestScope.flightId1}" required>
 		</div>
 		<div>
 			<label for="firstSeatClass">Seat Class: </label>
-			<input type="text" name="firstSeatClass" id="firstSeatClass" class="${requestScope.flightId1}" required disabled>
+			<input type="text" name="firstSeatClass" id="firstSeatClass" class="${requestScope.flightId1}" required>
 		</div>
 		
 		<% 
@@ -100,11 +100,11 @@ $(document).ready(function(){
 		<div><h2>Second Flight Reservation Preferences</h2></div>
 		<div>
 			<label for="secondSeatNo">Seat No: </label>
-			<input type="text" name="secondSeatNo" id="secondSeatNo" class="${requestScope.flightId2}" required disabled>
+			<input type="text" name="secondSeatNo" id="secondSeatNo" class="${requestScope.flightId2}" required>
 		</div>
 		<div>
 			<label for="secondSeatClass">Seat Class: </label>
-			<input type="text" name="secondSeatClass" id="secondSeatClass" class="${requestScope.flightId2}" required disabled>
+			<input type="text" name="secondSeatClass" id="secondSeatClass" class="${requestScope.flightId2}" required>
 		</div>
 		<% 
 			}

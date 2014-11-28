@@ -94,10 +94,7 @@
 			</c:forEach>
 		</table>
 
-		
-
 	</font>
 </body>
-
 
 </html>
