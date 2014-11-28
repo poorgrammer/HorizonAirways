@@ -48,8 +48,8 @@ public class SeatPickerServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String flightNo = "HA102";
-		String flightDate = "2015-02-03";		
+		String flightNo = "HA876";
+		String flightDate = "2015-01-16";		
 		FlightReservationService frs = new FlightReservationService();
 		frs.setDa(new ReservationDA());
 		
@@ -64,10 +64,9 @@ public class SeatPickerServlet extends HttpServlet {
 		FlightService fs = new FlightService(new FlightDAImpl());
 		AircraftLayout aircraftLayout = fs.getAircraftLayout(flightNo);
 //		
-		System.out.println(aircraftLayout.getFirstClassRows()+","+aircraftLayout.getBusinessClassRows()+","+aircraftLayout.getEconomyClassRows());
-		String firstClassZone = createClassZone("firstClassZone", aircraftLayout.getFirstClassRows(), aircraftLayout.getFirstClassSeatArrangement(),"firstClass");
-		String businessClassZone = createClassZone("businessClassZone", aircraftLayout.getBusinessClassRows(), aircraftLayout.getBusinessClassSeatArrangement(),"businessClass");
-		String economyClassZone = createClassZone("economyClassZone", aircraftLayout.getEconomyClassRows(), aircraftLayout.getEconomyClassSeatArrangement(),"economyClass");
+		String firstClassZone = createClassArea("firstClassZone", aircraftLayout.getFirstClassRows(), aircraftLayout.getFirstClassSeatArrangement(),"first");
+		String businessClassZone = createClassArea("businessClassZone", aircraftLayout.getBusinessClassRows(), aircraftLayout.getBusinessClassSeatArrangement(),"business");
+		String economyClassZone = createClassArea("economyClassZone", aircraftLayout.getEconomyClassRows(), aircraftLayout.getEconomyClassSeatArrangement(),"economy");
 
 		
 
@@ -80,7 +79,7 @@ public class SeatPickerServlet extends HttpServlet {
 	}
 	
 	
-	public String createClassZone(String tableId,int numOfRows,int[] arrangement,String seatClass){
+	public String createClassArea(String tableId,int numOfRows,int[] arrangement,String seatClass){
 		StringBuffer stringHTML = new StringBuffer();
 		int fcSumPerRow = 0;
 		int aisleCnt = 0;
@@ -98,11 +97,14 @@ public class SeatPickerServlet extends HttpServlet {
 					for(int i=0;i<arrangement[fcCols];i++){
 						String seatNo = String.valueOf((char)start)+rowCounter;
 						if(seatNos.contains(seatNo)){
-							stringHTML.append("<td class='occupiedSeat "+seatClass+"'>");
+							stringHTML.append("<td class='occupied seat'>");
 						}else{
-							stringHTML.append("<td class='availableSeat "+seatClass+"'>");
+							stringHTML.append("<td class='available seat'>");
 						}
-						stringHTML.append(seatNo+"</td>");
+						stringHTML.append(seatNo);
+						stringHTML.append("<div class='seatNo' hidden>"+seatNo+"</div>");
+						stringHTML.append("<div class='seatClass' hidden>"+seatClass+"</div>");
+						stringHTML.append("</td>");
 							start++;
 					}
 					if(aisleCnt < noOfAisle){

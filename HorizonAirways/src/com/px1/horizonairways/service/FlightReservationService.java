@@ -20,6 +20,10 @@ public class FlightReservationService {
 		
 	}
 
+	public FlightReservationService(ReservationDA da){
+		this.da = da;
+	}
+	
 	public void setDa(ReservationDA da) {
 		this.da = da;
 	}
@@ -70,4 +74,5 @@ public class FlightReservationService {
 		return da.getPassengerDetailsByPNR(pnr);
 
 	}
+	
 }
