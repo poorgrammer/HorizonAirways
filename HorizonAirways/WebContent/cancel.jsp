@@ -30,35 +30,34 @@
 		
 		<div>
 			<h3>Personal Details Form</h3>
-				<div>
-					<label for="firstName">First Name: </label>
-					<input type="text"  name="firstName" id="firstName" disabled value="${requestScope.passenger.firstName}">
-				</div>
-				<div>
-					<label for="lastName">Last Name: </label>
-					<input type="text" name="lastName" id="lastName" disabled value="${requestScope.passenger.firstName}" >
-				</div>
-				<div>
-					<label for="address">Address: </label>
-					<textarea  name="address" id="address" disabled>${requestScope.passenger.lastName}</textarea>
-				</div>
-				<div>
-					<label for="gender">Gender </label>
-					<input type="text" name="gender" id="gender" disabled value="${requestScope.passenger.gender}" >
-				</div>
-				<div>
-					<label for="birthDay">Birth Day: </label>
-					<input type="date" name="birthDay" id="birthDay" disabled value="${requestScope.passenger.birthDay}">
-				</div>
-				<div>
-					<label for="mobileNo">Mobile Number: </label>
-					<input type="text" name="mobileNo" id="mobileNo" disabled value="${requestScope.passenger.mobileNo}">
-				</div>
-				<div>
-					<label for="emailAddress">Email Address: </label>
-					<input type="email" name="emailAddress" id="emailAddress" disabled value="${requestScope.passenger.emailAddress}">
-				</div>
-			</fieldset>
+			<div>
+				<label for="firstName">First Name: </label>
+				<input type="text"  name="firstName" id="firstName" disabled value="${requestScope.passenger.firstName}">
+			</div>
+			<div>
+				<label for="lastName">Last Name: </label>
+				<input type="text" name="lastName" id="lastName" disabled value="${requestScope.passenger.firstName}" >
+			</div>
+			<div>
+				<label for="address">Address: </label>
+				<textarea  name="address" id="address" disabled>${requestScope.passenger.lastName}</textarea>
+			</div>
+			<div>
+				<label for="gender">Gender </label>
+				<input type="text" name="gender" id="gender" disabled value="${requestScope.passenger.gender}" >
+			</div>
+			<div>
+				<label for="birthDay">Birth Day: </label>
+				<input type="date" name="birthDay" id="birthDay" disabled value="${requestScope.passenger.birthDay}">
+			</div>
+			<div>
+				<label for="mobileNo">Mobile Number: </label>
+				<input type="text" name="mobileNo" id="mobileNo" disabled value="${requestScope.passenger.mobileNo}">
+			</div>
+			<div>
+				<label for="emailAddress">Email Address: </label>
+				<input type="email" name="emailAddress" id="emailAddress" disabled value="${requestScope.passenger.emailAddress}">
+			</div>
 		</div>
 	
 	</form>
@@ -87,31 +86,9 @@
 				</div>
 			</c:forEach>
 			
-			<%-- <table class="flightDetails">
-				<tr>
-					<th rowspan="2"></th>
-					<th rowspan="2">FlightDate</th>
-					<th rowspan="2">Seat No</th>
-					<th rowspan="2">Class</th>
-					<th rowspan="2">Meal</th>
-					<th rowspan="2">SSR</th>
-				</tr>
-	
-				<c:forEach items="${requestScope.reservedFlights}" var="reservedFlight">
-				<tr>
-					<td>${reservedFlight.flightNo}</td>
-					<td>${reservedFlight.flightDate }</td>
-					<td>${reservedFlight.seatNo }</td>
-					<td>${reservedFlight.seatClass }</td>
-					<td>${reservedFlight.mealPreference }</td>
-					<td>${reservedFlight.SSR }</td>
-				</tr>
-				</c:forEach>
-			</table> --%>
-			
 			<br>
 			<a href="./CancelReservation?flightNo=${reservedFlight.flightNo}&amp;pnrNo=${requestScope.passenger.pnr}">
-				<b>Cancel Reservation</b>
+				<h3>Cancel Reservation</h3>
 			</a>
 		</div>
 		</div>

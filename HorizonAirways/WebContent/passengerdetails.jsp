@@ -41,8 +41,9 @@ $(document).ready(function(){
 		</div>
 	</div>
 
-	<fieldset>
-		<legend>Personal Details Form</legend>
+	<form action="./PassengerDerails" method="post">
+	<div>
+		<h3>Personal Details Form</h3>
 		<div>
 			<label for="firstName">First Name: </label>
 			<input type="text"  name="firstName" id="firstName">
@@ -112,8 +113,9 @@ $(document).ready(function(){
 		<div class="button">
 			<input type="submit" value="Submit"/>
 		</div>
-	</fieldset>
-
+	</div>
+	</form>
+	
 	<c:set var="firstSeatPlan" value="${requestScope.firstPassengerSeatPlan}" />
 		<div>
 			<div class="area">
