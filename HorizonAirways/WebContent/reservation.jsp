@@ -7,6 +7,7 @@
     pageEncoding="ISO-8859-1"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="stylesheet" href="css/reservation.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Make Reservation</title>
 </head>
@@ -20,16 +21,68 @@
     <hr/>
     
 
-	<h3>Flight No: ${flightNo}</h3>
-    <br/>
+	
     <table>
       <tr>
         <td width="250">
         <form>
-            <form>
-                <input type="radio" name="trip" value="oneway"/> One-Way
-                <input type="radio" name="trip" value="roundtrip"/> Round Trip
-            </form>
+             <input type="radio" name="trip" value="oneway" checked id="onewayButton"/> One-Way
+                <input type="radio" name="trip" value="roundtrip" id="roundtripButton"/> Round Trip
+            
+            <br/>
+            <b>Flight Date:</b>
+            <br/><br/>
+       
+        <select name="month">
+             <c:forEach items="${months}" var="monthyear">
+             <option><c:out value="${monthyear}"/></option>>
+               </c:forEach>
+            <br/><br/>
+            <input type="submit" name="submit" value="Search" align="right"/>
+    
+        </form>
+    	</td>
+        
+        <td>
+        	<table border="1" align="center">
+             <tr>
+               <th rowspan="2" scope="col">Flight No.</th>
+               <th rowspan="2" scope="col">Sector</th>
+               <th rowspan="2" scope="col">Flight Date</th>
+               <th rowspan="2" scope="col">Aircraft Type</th>
+               <th rowspan="2" scope="col">Departure Time</th>
+               <th rowspan="2" scope="col">Arrival Time</th>
+               <th colspan="3" scope="col">Remaining Seats</th>
+             </tr>
+             <tr>
+               <th scope="col">First Class</th>
+               <th scope="col">Business Class</th>
+               <th scope="col">Economy Class</th>
+             </tr>
+             
+             <c:forEach items="${flightDetailsList}" var="flightDetails">
+             <tr>
+               <td>${flightDetails.flightNo}</td>
+               <td>${flightDetails.sectorId}</td>
+               <td>${flightDetails.flightDate}</td>
+               <td>${flightDetails.aircraftType}</td>
+               <td>${flightDetails.departureTime}</td>
+               <td>${flightDetails.arrivalTime}</td>
+               <td>${flightDetails.firstClassSeatsAvailable}</td>
+               <td>${flightDetails.businessClassSeatsAvailable}</td>
+               <td>${flightDetails.economyClassSeatsAvailable}</td>
+             </tr>
+             </c:forEach>
+           </table> 
+        </td>
+      </tr>
+    </table>
+    <div id="roundtrip">
+        <table>
+      <tr>
+        <td width="250">
+        <form action="#">
+          
             <br/>
             <b>Flight Date:</b>
             <br/><br/>
@@ -79,6 +132,11 @@
       </tr>
     </table>
     
+    </div>
+    
+    
 </font>
+
+<script src="js/reservation.js"></script>
 </body>
 </html>

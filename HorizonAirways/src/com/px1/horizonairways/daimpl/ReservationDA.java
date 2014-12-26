@@ -26,6 +26,7 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 
 	private static final String GET_ALL_FLIGHT_SCHEDULE = "SELECT * FROM flightdetailsindays";
 	private static final String GET_ALL_FLIGHT_DETAILS = "SELECT * FROM flightschedules ";
+	private static final String GET_ALL_FLIGHT_DETAILS_BY_SECTOR = "SELECT * FROM flightschedules WHERE sectorid = ?";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTID = "SELECT * FROM flightdetails WHERE FlightNo = ? AND FlightDate = ?";
 	private static final String GET_ALL_RESERVED_FLIGHTS_BY_PNR = "SELECT * FROM reservedflights WHERE pnrno = ?";
 	private static final String GET_ALL_FLIGHT_DETAILS_BY_FLIGHTNO = "SELECT * FROM vwflightschedules WHERE flightNo = ?";
@@ -321,5 +322,52 @@ public class ReservationDA implements FlightDetailsDA, PassengerDetailsDA,
 		return flightFareMap;
 			
 			
+	}
 
+
+	public List<FlightDetails> getAllFlightDetailsBySector(String sector) {
+		
+		List<FlightDetails> flightDetailsListBySector = new ArrayList<FlightDetails>();
+		PreparedStatement stat = null;
+		try {
+			stat = DatabaseConnector.getConnection().prepareStatement(GET_ALL_FLIGHT_DETAILS_BY_SECTOR);
+			stat.setString(1, sector);
+			ResultSet rs = stat.executeQuery();
+
+			while (rs.next()) {
+
+				String flightNo = rs.getString(1);
+				String sectorId = rs.getString(2);
+				String aircraftDescription = rs.getString(3);
+				Date flightDate = rs.getDate(4);
+				String depTime = rs.getString(5);
+				String arrTime = rs.getString(6);
+				int firstClassSeatsAvailable = rs.getInt(7);
+				int businessClassSeatsAvailable = rs.getInt(8);
+				int economyClassSeatsAvailable = rs.getInt(9);
+
+				FlightDetails flightDetails = new FlightDetails(flightNo,
+						sectorId, flightDate, aircraftDescription, depTime,
+						arrTime, firstClassSeatsAvailable,
+						businessClassSeatsAvailable, economyClassSeatsAvailable);
+
+				flightDetailsListBySector.add(flightDetails);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			if (stat != null)
+
+				try {
+					stat.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+
+		return flightDetailsListBySector;
+
+	}
 }

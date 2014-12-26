@@ -29,6 +29,10 @@ public class FlightReservationService {
 		return da.getAllFlightDetailsByFlightNo(flightNo);
 	}
 	
+	public List<FlightDetails> getAllFlightDetailsBySector(String sectorId){
+		return da.getAllFlightDetailsBySector(sectorId);
+	}
+	
 	public Map<String, BigDecimal> getFlightFareBySectorId(String sectorId){
 		return da.getFlightFareBySector(sectorId);
 	}

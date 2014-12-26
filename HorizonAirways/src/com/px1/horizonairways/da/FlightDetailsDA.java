@@ -15,5 +15,6 @@ public interface FlightDetailsDA {
 	public List<FlightSchedule> getAllFlightSchedule();
 	public List<FlightDetails> getAllFlightDetailsByFlightNo(String flightNo);
 	public Map<String,BigDecimal> getFlightFareBySector(String sectorId);
+	public List<FlightDetails> getAllFlightDetailsBySector(String sectorId);
 
 }

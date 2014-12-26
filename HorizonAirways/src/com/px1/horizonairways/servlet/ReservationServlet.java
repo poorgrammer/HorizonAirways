@@ -44,8 +44,10 @@ public class ReservationServlet extends HttpServlet {
 		service.setDa(da);
 		Map<String, BigDecimal> flightFareMap = service.getFlightFareBySectorId(sectorId);
 		List<FlightDetails> flightDetailsList = service.getAllFlightDetailsByNum(flightNo);
+		String roundtripSector = sectorId.substring(3) + sectorId.charAt(2) + sectorId.substring(0,2);
+		List<FlightDetails> flightDetailsRoundtrip = service.getAllFlightDetailsBySector(roundtripSector);
 		request.setAttribute("flightDetailsList", flightDetailsList);
-		
+		request.setAttribute("flightDetailsRoundtrip", flightDetailsRoundtrip);
 		String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	    List<String> months = new ArrayList<String>();
 		Calendar calendar = Calendar.getInstance();
